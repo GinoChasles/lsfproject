@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,4 +17,7 @@ public class Genre {
 
     @Column(name="nom")
     private String nom;
+
+    @OneToMany(mappedBy = "nombre")
+    private Set<Mot> mot;
 }

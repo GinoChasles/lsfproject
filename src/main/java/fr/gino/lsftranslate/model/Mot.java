@@ -21,12 +21,6 @@ public class Mot {
     @Column(name="lemme", nullable = false)
     private String lemme;
 
-    private String catgram;
-
-    private String genre;
-
-    private String nombre;
-
     @Column(name="infover")
     private String infover;
 
@@ -38,5 +32,22 @@ public class Mot {
 
     @Column(name="orthrenv", nullable = false)
     private String orthrenv;
+
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="video_id", referencedColumnName = "id")
+    private Video video;
+
+    @ManyToOne
+    @JoinColumn(name="catgram_id", nullable = false)
+    private CatGram catgram;
+
+    @ManyToOne
+    @JoinColumn(name="genre_id", nullable = true)
+    private Genre genre;
+
+    @ManyToOne
+    @JoinColumn(name="nombre_id", nullable = true)
+    private Nombre nombre;
+
 
 }

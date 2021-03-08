@@ -17,5 +17,6 @@ public class Video {
     @Column(name="url", nullable = true)
     private String url;
 
-
+    @OneToOne(mappedBy = "video")
+    private Mot mot;
 }

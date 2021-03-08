@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,5 +17,8 @@ public class CatGram {
 
     @Column(name="nom", nullable = false)
     private String nom;
+
+    @OneToMany(mappedBy = "catgram")
+    private Set<Mot> mot;
 
 }
