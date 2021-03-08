@@ -13,12 +13,9 @@ import java.util.Set;
 public class CatGram {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name="nom", nullable = false)
     private String nom;
-
-    @OneToMany(mappedBy = "catgram")
-    private Set<Mot> mot;
 
 }

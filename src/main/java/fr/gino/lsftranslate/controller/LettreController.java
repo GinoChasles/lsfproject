@@ -16,7 +16,7 @@ public class LettreController {
     @Autowired
     LettreService lettreService;
     @GetMapping("lettre/{id}")
-    public ResponseEntity<Optional<Lettre>> findById(@PathVariable(value = "id") long id){
+    public ResponseEntity<Optional<Lettre>> findById(@PathVariable(value = "id") int id){
         Optional<Lettre> lettre;
         try {
             lettre = lettreService.findById(id);

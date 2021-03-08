@@ -12,11 +12,13 @@ import javax.persistence.*;
 public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name="url", nullable = true)
     private String url;
-
+/*
     @OneToOne(mappedBy = "video")
     private Mot mot;
+
+ */
 }

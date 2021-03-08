@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Lettre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name="letter")
     private String nom;

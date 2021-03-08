@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Signe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name="img")
     private String url;
@@ -19,7 +19,7 @@ public class Signe {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

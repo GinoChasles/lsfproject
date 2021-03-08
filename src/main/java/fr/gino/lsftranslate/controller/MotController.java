@@ -16,7 +16,7 @@ public class MotController {
 
     @CrossOrigin
     @GetMapping("mots/{id}")
-    public ResponseEntity<Optional<Mot>> findById(@PathVariable(value = "id") long id){
+    public ResponseEntity<Optional<Mot>> findById(@PathVariable(value = "id") int id){
         Optional<Mot> mot;
         try {
             mot = motService.findById(id);

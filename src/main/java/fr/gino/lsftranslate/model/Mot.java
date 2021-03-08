@@ -13,7 +13,7 @@ public class Mot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id",nullable = false)
-    private long id;
+    private Integer id;
 
     @Column(name= "ortho", nullable = false)
     private String ortho;
@@ -33,20 +33,22 @@ public class Mot {
     @Column(name="orthrenv", nullable = false)
     private String orthrenv;
 
+
+
     @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="video_id", referencedColumnName = "id")
+    @JoinColumn(name="video", referencedColumnName = "url")
     private Video video;
 
     @ManyToOne
-    @JoinColumn(name="catgram_id", nullable = false)
+    @JoinColumn(name="catgram", nullable = false)
     private CatGram catgram;
 
     @ManyToOne
-    @JoinColumn(name="genre_id", nullable = true)
+    @JoinColumn(name="genre", nullable = true)
     private Genre genre;
 
     @ManyToOne
-    @JoinColumn(name="nombre_id", nullable = true)
+    @JoinColumn(name="nombre", nullable = true)
     private Nombre nombre;
 
 

@@ -13,7 +13,7 @@ public class MotServiceImpl implements MotService {
     MotRepository motRepository;
 
     @Override
-    public Optional<Mot> findById(long id) {
+    public Optional<Mot> findById(int id) {
         return motRepository.findById(id);
     }
 }

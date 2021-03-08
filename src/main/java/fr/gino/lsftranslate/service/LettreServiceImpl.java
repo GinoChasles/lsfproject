@@ -13,7 +13,7 @@ public class LettreServiceImpl implements LettreService{
     LettreRepository lettreRepository;
 
     @Override
-    public Optional<Lettre> findById(long id) {
+    public Optional<Lettre> findById(int id) {
         return lettreRepository.findById(id);
     }
 }

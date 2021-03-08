@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,11 +14,10 @@ import java.util.Set;
 public class Nombre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name="nom")
     private String nom;
 
-    @OneToMany(mappedBy = "genre")
-    private Set<Mot> mot;
+
 }
