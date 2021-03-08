@@ -30,6 +30,10 @@ VALUES
 ('PRO:rel'),
 ('VER');
 
+INSERT INTO signe (img)
+VALUES ('../img/test/bidon'),('../img/test/bidon2');
+
+INSERT INTO letter (letter, signe_id) VALUES ('a',1), ('b',2);
 
 
 /*transforme les noms de la catégorie gramaticale dans la table mot en id associé dans la table catgram */

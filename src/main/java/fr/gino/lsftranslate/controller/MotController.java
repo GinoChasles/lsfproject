@@ -1,30 +1,29 @@
 package fr.gino.lsftranslate.controller;
 
-import fr.gino.lsftranslate.model.Word;
-import fr.gino.lsftranslate.service.WordService;
+import fr.gino.lsftranslate.model.Mot;
+import fr.gino.lsftranslate.service.MotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/dico")
-public class WordController {
+public class MotController {
     @Autowired
-    WordService wordService;
+    MotService motService;
 
     @CrossOrigin
     @GetMapping("mots/{id}")
-    public ResponseEntity<Optional<Word>> findById(@PathVariable(value = "id") long id){
-        Optional<Word> wordList;
+    public ResponseEntity<Optional<Mot>> findById(@PathVariable(value = "id") long id){
+        Optional<Mot> mot;
         try {
-            wordList = wordService.findById(id);
+            mot = motService.findById(id);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok().body(wordList);
+        return ResponseEntity.ok().body(mot);
     }
 
 

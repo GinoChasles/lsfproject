@@ -1,11 +1,9 @@
 package fr.gino.lsftranslate.repository;
 
-import fr.gino.lsftranslate.model.Word;
+import fr.gino.lsftranslate.model.Mot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface WordRepository extends JpaRepository<Word, Long> {
+public interface MotRepository extends JpaRepository<Mot, Long> {
 }

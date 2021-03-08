@@ -21,45 +21,45 @@ USE `lsfproject` ;
 -- Table `lsfproject`.`video`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lsfproject`.`video` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `url` VARCHAR(155) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `idvideo_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `url_UNIQUE` (`url` ASC) VISIBLE)
-ENGINE = InnoDB;
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `url` VARCHAR(155) NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `idvideo_UNIQUE` (`id` ASC) VISIBLE,
+    UNIQUE INDEX `url_UNIQUE` (`url` ASC) VISIBLE)
+    ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `lsfproject`.`genre`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lsfproject`.`genre` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
-ENGINE = InnoDB;
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `nom` VARCHAR(45) NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+    ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `lsfproject`.`nombre`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lsfproject`.`nombre` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
-ENGINE = InnoDB;
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `nom` VARCHAR(45) NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+    ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `lsfproject`.`catGram`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lsfproject`.`catGram` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
-ENGINE = InnoDB;
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `nom` VARCHAR(45) NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+    ENGINE = InnoDB;
 
 
 
@@ -67,50 +67,50 @@ ENGINE = InnoDB;
 -- Table `lsfproject`.`signe`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lsfproject`.`signe` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `img` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `idsigne_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `img_UNIQUE` (`img` ASC) VISIBLE)
-ENGINE = InnoDB;
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `img` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `idsigne_UNIQUE` (`id` ASC) VISIBLE,
+    UNIQUE INDEX `img_UNIQUE` (`img` ASC) VISIBLE)
+    ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `lsfproject`.`letter`
+-- Table `lsfproject`.`lettre`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lsfproject`.`letter` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `letter` VARCHAR(5) NOT NULL,
-  `signe_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `signe_id`),
-  UNIQUE INDEX `idletter_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `letter_UNIQUE` (`letter` ASC) VISIBLE,
-  INDEX `fk_letter_signe1_idx` (`signe_id` ASC) VISIBLE,
-  CONSTRAINT `fk_letter_signe1`
+CREATE TABLE IF NOT EXISTS `lsfproject`.`lettre` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `lettre` VARCHAR(5) NOT NULL,
+    `signe_id` INT NOT NULL,
+    PRIMARY KEY (`id`, `signe_id`),
+    UNIQUE INDEX `idlettre_UNIQUE` (`id` ASC) VISIBLE,
+    UNIQUE INDEX `lettre_UNIQUE` (`lettre` ASC) VISIBLE,
+    INDEX `fk_lettre_signe1_idx` (`signe_id` ASC) VISIBLE,
+    CONSTRAINT `fk_lettre_signe1`
     FOREIGN KEY (`signe_id`)
     REFERENCES `lsfproject`.`signe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `lsfproject`.`mot`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lsfproject`.`mot` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `ortho` VARCHAR(75) NOT NULL,
-  `lemme` VARCHAR(75) NOT NULL,
-  `catgram` VARCHAR(45) NULL,
-  `genre` VARCHAR(70) NULL,
-  `nombre` VARCHAR(45) NULL,
-  `infover` VARCHAR(75) NULL,
-  `nblettres` INT NULL,
-  `nbsyll` INT NULL,
-  `orthrenv` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `idword_UNIQUE` (`id` ASC) VISIBLE)
-ENGINE = InnoDB;
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `ortho` VARCHAR(75) NOT NULL,
+    `lemme` VARCHAR(75) NOT NULL,
+    `catgram` VARCHAR(45) NULL,
+    `genre` VARCHAR(70) NULL,
+    `nombre` VARCHAR(45) NULL,
+    `infover` VARCHAR(75) NULL,
+    `nblettres` INT NULL,
+    `nbsyll` INT NULL,
+    `orthrenv` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `idword_UNIQUE` (`id` ASC) VISIBLE)
+    ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
