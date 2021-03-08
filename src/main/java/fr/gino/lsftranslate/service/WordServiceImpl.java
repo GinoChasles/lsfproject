@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WordServiceImpl implements WordService{
@@ -13,7 +14,7 @@ public class WordServiceImpl implements WordService{
     WordRepository wordRepository;
 
     @Override
-    public List<Word> findById(long id) {
+    public Optional<Word> findById(long id) {
         return wordRepository.findById(id);
     }
 }

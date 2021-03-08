@@ -1,8 +1,13 @@
 package fr.gino.lsftranslate.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +17,7 @@ public class Word {
 
     private String lemme;
 
-    private String gram;
+    private String catgram;
 
     private String genre;
 

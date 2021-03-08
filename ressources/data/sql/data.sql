@@ -1,9 +1,9 @@
-INSERT INTO genre (nom)
-VALUES (NULL,'m'),('f');
+INSERT INTO lsfproject.genre (nom)
+VALUES ('m'),('f');
 
 
 INSERT INTO nombre (nom)
-VALUES (NULL, 'p'),('s');
+VALUES  ('s'),('p');
 
 INSERT INTO catGram (nom)
 VALUES
@@ -15,7 +15,7 @@ VALUES
 ('ADJ:pos'),
 ('ADV'),
 ('ART:def'),
-('ART:inf'),
+('ART:ind'),
 ('AUX'),
 ('CON'),
 ('LIA'),
@@ -32,24 +32,38 @@ VALUES
 
 
 
-/*transforme les noms de la catégorie gramaticale dans la table mot2 en id associé dans la table catgram */
+/*transforme les noms de la catégorie gramaticale dans la table mot en id associé dans la table catgram */
 
-UPDATE mot2
+UPDATE mot
     INNER JOIN catgram
-ON mot2.catgram = catgram.nom
-    SET mot2.catgram = catgram.id
+ON mot.catgram = catgram.nom
+    SET mot.catgram = catgram.id
 WHERE catgram.id IS NOT NULL;
 
-UPDATE mot2
+UPDATE mot
     INNER JOIN genre
-ON mot2.genre = genre.nom
-    SET mot2.genre = genre.id
+ON mot.genre = genre.nom
+    SET mot.genre = genre.id
 WHERE genre.id IS NOT NULL;
 
-UPDATE mot2
+UPDATE mot
     INNER JOIN nombre
-ON mot2.nombre = nombre.nom
-    SET mot2.nombre = nombre.id
+ON mot.nombre = nombre.nom
+    SET mot.nombre = nombre.id
 WHERE nombre.id IS NOT NULL;
 
+
+
+
+/*ajout foreign key entre la table mot et genre*/
+ALTER TABLE `lsfproject`.`mot`
+    ADD CONSTRAINT `id_genre`
+        FOREIGN KEY (`genre`)
+            REFERENCES `lsfproject`.`genre` (`id`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION;
+
+/*affiche les éléments de mot avec la correspondance de l'id de catgram*/
+SELECT * FROM lsfproject.mot
+                  INNER JOIN catgram ON mot.catgram= catgram.id;
 
