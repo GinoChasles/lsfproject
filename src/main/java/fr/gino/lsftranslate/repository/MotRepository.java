@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface MotRepository extends JpaRepository<Mot, Integer> {
-    List<Mot> findAllById(int id, Pageable pageable);
 }

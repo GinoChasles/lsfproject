@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import fr.gino.lsftranslate.model.Mot;
 import fr.gino.lsftranslate.service.MotService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,7 +30,15 @@ public class MotController {
         return ResponseEntity.ok().body(mot);
     }
 
-    @RequestMapping(value = "mots", method = RequestMethod.GET)
+    @CrossOrigin
+    @GetMapping("mots")
+    public ResponseEntity<List<Mot>> findAllMots(@RequestParam(defaultValue="0") Integer pageNo,
+                                                 @RequestParam(defaultValue = "20") Integer pageSize,
+                                                 @RequestParam(defaultValue = "id") String sortBy){
+        List<Mot> list = motService.findAllMots(pageNo,pageSize,sortBy);
+
+        return new ResponseEntity<List<Mot>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
 
 
 
