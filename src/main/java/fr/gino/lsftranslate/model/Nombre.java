@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Table(name="genre", schema="lsfproject")
+@Table(name="nombre", schema="lsfproject")
 public class Nombre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
