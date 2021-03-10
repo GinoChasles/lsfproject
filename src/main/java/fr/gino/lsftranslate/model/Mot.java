@@ -1,5 +1,7 @@
 package fr.gino.lsftranslate.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,14 +43,17 @@ public class Mot {
 
     @ManyToOne
     @JoinColumn(name="catgram", nullable = false)
+    @JsonManagedReference
     private CatGram catgram;
 
     @ManyToOne
     @JoinColumn(name="genre", nullable = true)
+    @JsonManagedReference
     private Genre genre;
 
     @ManyToOne
     @JoinColumn(name="nombre", nullable = true)
+    @JsonManagedReference
     private Nombre nombre;
 
 

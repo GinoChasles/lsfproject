@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Testfetch from "./composants/Testfetch.js";
+import TestListMot from "./composants/TestListMot";
 function App() {
   return (
     <div className="App">
@@ -13,7 +14,8 @@ function App() {
         >
           Learn React
         </a>
-        <Testfetch />
+        {/*<Testfetch />*/}
+        <TestListMot />
       </header>
     </div>
   );

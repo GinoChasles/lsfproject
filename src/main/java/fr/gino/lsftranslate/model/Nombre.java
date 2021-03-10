@@ -1,5 +1,6 @@
 package fr.gino.lsftranslate.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,5 +20,8 @@ public class Nombre {
     @Column(name="nom")
     private String nom;
 
+    @OneToMany(mappedBy = "nombre", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<Mot> mots;
 
 }

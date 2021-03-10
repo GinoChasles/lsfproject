@@ -52,7 +52,7 @@ public class MotController {
 
     @CrossOrigin
     @PutMapping("/mots/{id}")
-    ResponseEntity<Mot> updateFruit(@PathVariable(value = "id") int id, @RequestBody Mot mot){
+    ResponseEntity<Mot> updateMot(@PathVariable(value = "id") int id, @RequestBody Mot mot){
         Mot updateMot = motService.update(id, mot);
         if(updateMot == null){
             return ResponseEntity.notFound().build();
