@@ -2,21 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import Testfetch from "./composants/Testfetch.js";
 import TestListMot from "./composants/TestListMot";
+import NavBar from "./composants/NavBar";
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-               <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <NavBar />
+      </header>
         {/*<Testfetch />*/}
         <TestListMot />
-      </header>
     </div>
   );
 }

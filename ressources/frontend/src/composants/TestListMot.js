@@ -24,7 +24,7 @@ export default class TestListMot extends React.Component{
         if(el.video == null){
              icone =
             <div>
-                <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'}/>
+                <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'}  />
                 <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'}/>
             </div>
         } else
