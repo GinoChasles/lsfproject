@@ -70,4 +70,5 @@ ALTER TABLE `lsfproject`.`mot`
 /*affiche les éléments de mot avec la correspondance de l'id de catgram*/
 SELECT * FROM lsfproject.mot
                   INNER JOIN catgram ON mot.catgram= catgram.id;
-
+# correctif column video reset à null (soucis coté front quand valeur défini)
+UPDATE `lsfproject`.`mot` SET `video` = NULL WHERE (`id` = '1');

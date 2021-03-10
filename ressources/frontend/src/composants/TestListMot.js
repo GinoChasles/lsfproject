@@ -19,18 +19,22 @@ export default class TestListMot extends React.Component{
     render (){
         let videoState = this.state.mots;
         let icone;
-        if(videoState.forEach(data=>data.video) == null){
-            icone =
+    console.log(videoState);
+        for(let el in videoState){
+        if(el.video == null){
+             icone =
             <div>
                 <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'}/>
                 <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'}/>
             </div>
-        } else {
-            icone =
+        } else
+            {
+             icone =
                 <div>
                     <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'}/>
                     <img src={process.env.PUBLIC_URL + '/img/video.svg'}/>
                 </div>
+            }
         }
         return (
             <div>

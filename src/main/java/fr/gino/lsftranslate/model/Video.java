@@ -1,5 +1,6 @@
 package fr.gino.lsftranslate.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +17,10 @@ public class Video {
 
     @Column(name="url", nullable = true)
     private String url;
-/*
+
     @OneToOne(mappedBy = "video")
+    @JsonBackReference
     private Mot mot;
 
- */
+
 }

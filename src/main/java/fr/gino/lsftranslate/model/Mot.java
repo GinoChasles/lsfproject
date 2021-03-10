@@ -37,8 +37,9 @@ public class Mot {
 
 
 
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="video", referencedColumnName = "url")
+    @OneToOne
+    @JoinColumn(name="video", referencedColumnName = "id")
+    @JsonManagedReference
     private Video video;
 
     @ManyToOne
