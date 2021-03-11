@@ -39,6 +39,13 @@ public class MotController {
 
         return new ResponseEntity<List<Mot>>(list, new HttpHeaders(), HttpStatus.OK);
     }
+    @CrossOrigin
+    @GetMapping("mots/all")
+    public ResponseEntity<List<Mot>> findAll(){
+        List<Mot> list = motService.findAll();
+
+        return ResponseEntity.ok().body(list);
+    }
 
 
 

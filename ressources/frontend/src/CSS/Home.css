@@ -2,10 +2,21 @@
     margin-top: 3em;
 }
 #page-home > img {
+    margin: 1em auto;
     width:60%;
     height:40%;
 }
 
 #page-home > p {
     margin: 10px 20px 10px 20px;
+}
+@media screen and (min-width:640px) {
+    #page-home > img {
+        width:248px;
+    }
+    #page-home > p {
+        margin: 1em auto;
+        width:50%;
+
+    }
 }

@@ -11,4 +11,5 @@ public interface MotService {
     Mot delete(int id);
     Mot update(int id, Mot mot);
     List<Mot> findAllMots(Integer pageNo, Integer pageSize, String sortBy);
+    List<Mot> findAll();
 }

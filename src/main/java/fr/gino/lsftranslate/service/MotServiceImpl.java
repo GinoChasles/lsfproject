@@ -70,4 +70,9 @@ public class MotServiceImpl implements MotService {
         }
     }
 
+    @Override
+    public List<Mot> findAll() {
+        return motRepository.findAll();
+    }
+
 }
