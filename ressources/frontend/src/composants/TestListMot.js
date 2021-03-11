@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../App.css';
 export default class TestListMot extends React.Component{
 
     constructor(props) {
@@ -37,7 +37,7 @@ export default class TestListMot extends React.Component{
             }
         }
         return (
-            <div>
+            <div className="page">
                 <h1 className = "text-center">Dictionnaire</h1>
                 <table className = "table table-striped">
                     <thead>
