@@ -1,7 +1,6 @@
 import React from "react";
 import '../App.css';
 import SearchBar from "./SearchBar/SearchBar";
-import TestSearchBar from "./SearchBar/TestSearchBar";
 
 export default class TestListMot extends React.Component{
 
@@ -42,13 +41,22 @@ export default class TestListMot extends React.Component{
         return (
             <div className="page">
                 <h1 className = "text-center">Dictionnaire</h1>
-              {/*  <SearchBar/>
-                <TestSearchBar />*/}
+
+
+
                 <table className = "table table-striped">
                     <thead>
                     <tr>
-                        <td> orthographe du mot</td>
-                        <td> vidéo</td>
+                        <td>Orthographe</td>
+                        <td> lemme du mot</td>
+                        <td> catégorie gramaticale</td>
+                        {/*<td> genre</td>*/}
+                        {/*<td>  nombre</td>*/}
+                        <td>  info verbale</td>
+                        <td> nbr de lettres </td>
+                        <td> nbr de syllabes </td>
+                        <td> ortho renversé </td>
+                        {/*<td> vidéo  </td>*/}
                     </tr>
 
                     </thead>
@@ -58,14 +66,21 @@ export default class TestListMot extends React.Component{
                             mot =>
                                 <tr key = {mot.id}>
                                     <td> {mot.ortho}</td>
-                                    <td> {icone}</td>
+                                    <td> {mot.lemme}</td>
+                                    <td> {mot.catgram.nom}</td>
+                                    {/*<td> {mot.genre.id}</td>*/}
+                                    {/*<td> {mot.nombre.id}</td>*/}
+                                    <td> {mot.infover}</td>
+                                    <td> {mot.nblettres}</td>
+                                    <td> {mot.nbsyll}</td>
+                                    <td> {mot.orthrenv}</td>
+                                    {/*<td> {mot.video.id}</td>*/}
                                 </tr>
                         )
                     }
 
                     </tbody>
                 </table>
-
             </div>
 
         )

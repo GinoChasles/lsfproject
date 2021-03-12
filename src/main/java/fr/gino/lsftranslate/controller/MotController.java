@@ -47,7 +47,17 @@ public class MotController {
         return ResponseEntity.ok().body(list);
     }
 
-
+    @CrossOrigin
+    @GetMapping("mots/genre/{id}")
+    public ResponseEntity<List<Mot>> findMotByGenreId(@PathVariable(value = "id") int id){
+        List<Mot> mot;
+        try {
+            mot = motService.findMotByGenreId(id);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(mot);
+    }
 
 
 

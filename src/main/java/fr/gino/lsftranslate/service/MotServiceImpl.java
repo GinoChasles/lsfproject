@@ -1,5 +1,6 @@
 package fr.gino.lsftranslate.service;
 
+import fr.gino.lsftranslate.model.Genre;
 import fr.gino.lsftranslate.model.Mot;
 import fr.gino.lsftranslate.repository.MotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,11 @@ public class MotServiceImpl implements MotService {
     @Override
     public List<Mot> findAll() {
         return motRepository.findAll();
+    }
+
+    @Override
+    public List<Mot> findMotByGenreId(int genre_id) {
+        return motRepository.findMotByGenreId(genre_id);
     }
 
 }

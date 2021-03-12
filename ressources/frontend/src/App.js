@@ -7,7 +7,9 @@ import {
 } from "react-router-dom";
 
 import TestListMot from "./composants/TestListMot";
+import SearchBar from "./composants/SearchBar/SearchBar";
 import Home from "./composants/Home";
+import MonCompte from "./composants/MonCompte";
 import Footer from "./composants/Footer";
 
 
@@ -29,9 +31,9 @@ function App() {
               </ul>
           </nav>
           <Switch>
-              <Route path="/dico/mots"><TestListMot /></Route>
+              <Route path="/dico/mots"><SearchBar/> <TestListMot/></Route>
+              <Route path="/compte" component={MonCompte}></Route>
               <Route path="/" component={Home}></Route>
-              <Route path="/compte"></Route>
           </Switch>
           <Footer />
       </Router>
