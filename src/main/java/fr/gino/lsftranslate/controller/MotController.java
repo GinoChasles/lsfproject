@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import fr.gino.lsftranslate.model.Mot;
 import fr.gino.lsftranslate.service.MotService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +47,13 @@ public class MotController {
         List<Mot> list = motService.findAll();
 
         return ResponseEntity.ok().body(list);
+    }
+    @CrossOrigin
+    @GetMapping("mots/all/20")
+    public ResponseEntity<Page<Mot>> findAll(Pageable pageable){
+        Page<Mot> page = motService.findAll(pageable);
+
+        return ResponseEntity.ok().body(page);
     }
 
     @CrossOrigin

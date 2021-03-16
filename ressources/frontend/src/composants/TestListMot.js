@@ -1,24 +1,74 @@
 import React from "react";
 import '../App.css';
-import SearchBar from "./SearchBar/SearchBar";
+import '../CSS/ListMots.css';
 
 export default class TestListMot extends React.Component{
 
     constructor(props) {
         super(props);
         this.state= {
-            mots:[]
+            mots:[],
+            currentPage: 1,
+            motsPerPage: 20,
         };
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/dico/mots/').then((res)=>res.json().then((data)=>{
-            this.setState({ mots: data });
+        this.findAllMots(this.state.currentPage);
+    }
+
+    findAllMots(currentPage){
+        currentPage -=1;
+        fetch('http://localhost:8080/dico/mots/all/20?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+            this.setState({
+                mots: data.content,
+                totalPages: data.totalPages,
+                totalElements: data.totalElements,
+                currentPage: data.number + 1
+            });
         }));
     }
 
+    changePage = event => {
+        let targetPage = parseInt(event.target.value);
+        this.findAllMots(targetPage);
+        this.setState({
+            currentPage: targetPage
+        });
+    }
+
+    firstPage = () => {
+        let firstPage = 1;
+        if(this.state.currentPage > firstPage){
+            this.findAllMots(firstPage);
+        }
+    }
+    prevPage = () => {
+        let prevPage = 1;
+        if(this.state.currentPage > prevPage){
+            this.findAllMots(this.state.currentPage - prevPage);
+        }
+    }
+    lastPage = () => {
+        let condition = Math.ceil(this.state.totalElements / this.state.motsPerPage)
+        if(this.state.currentPage < condition){
+            this.findAllMots(condition);
+        }
+    }
+    nextPage = () => {
+        if(this.state.currentPage < Math.ceil(this.state.totalElements / this.state.motsPerPage)){
+            this.findAllMots(this.state.currentPage + 1);
+        }
+    }
 
     render (){
+
+        const {mots, currentPage, totalPages} = this.state;
+        // const lastIndex = currentPage * motsPerPage;
+        // const firstIndex = lastIndex - motsPerPage;
+        // const currentMots = mots.slice(firstIndex,lastIndex);
+        // const totalPages = Math.round(mots.length / motsPerPage);
+
         let videoState = this.state.mots;
         let icone;
   /*  console.log(videoState);*/
@@ -38,13 +88,16 @@ export default class TestListMot extends React.Component{
                 </div>
             }
         }
+
+
+
         return (
             <div className="page">
                 <h1 className = "text-center">Dictionnaire</h1>
 
 
 
-                <table className = "table table-striped">
+                <table className = "table">
                     <thead>
                     <tr>
                         <td>Orthographe</td>
@@ -62,7 +115,7 @@ export default class TestListMot extends React.Component{
                     </thead>
                     <tbody>
                     {
-                        this.state.mots.map(
+                        mots.map(
                             mot =>
                                 <tr key = {mot.id}>
                                     <td> {mot.ortho}</td>
@@ -80,6 +133,27 @@ export default class TestListMot extends React.Component{
                     }
 
                     </tbody>
+                    <tfoot>
+                        <td>Page {currentPage} sur {totalPages}</td>
+                        <td>
+                            <button type="button" disabled={currentPage === 1 ? true : false}
+                            onClick={this.firstPage}>Première</button>
+
+                            <button type="button" disabled={currentPage === 1 ? true : false}
+                            onClick={this.prevPage}>Précédente</button>
+
+                            <div>
+                                <label for="currentPage"></label>
+                                <input type="number" id="currentPage" value={currentPage} onChange={this.changePage} />
+                            </div>
+
+                            <button type="button" disabled={currentPage === totalPages ? true : false}
+                            onClick={this.nextPage}>Suivante</button>
+
+                            <button type="button" disabled={currentPage === totalPages ? true : false}
+                            onClick={this.lastPage}>Dernière</button>
+                        </td>
+                    </tfoot>
                 </table>
             </div>
 

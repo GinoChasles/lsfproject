@@ -10,13 +10,12 @@ import TestListMot from "./composants/TestListMot";
 import SearchBar from "./composants/SearchBar/SearchBar";
 import Home from "./composants/Home";
 import MonCompte from "./composants/MonCompte";
-import Footer from "./composants/Footer";
-
 
 
 function App() {
   return (
-      <Router>
+      <Router >
+    <div id="routeur">
           <nav>
               <ul className='nav-menu'>
                   <li>
@@ -35,7 +34,7 @@ function App() {
               <Route path="/compte" component={MonCompte}></Route>
               <Route path="/" component={Home}></Route>
           </Switch>
-          <Footer />
+    </div>
       </Router>
 
   );

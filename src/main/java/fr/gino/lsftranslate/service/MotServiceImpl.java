@@ -81,4 +81,9 @@ public class MotServiceImpl implements MotService {
         return motRepository.findMotByGenreId(genre_id);
     }
 
+    @Override
+    public Page<Mot> findAll(Pageable pageable) {
+        return motRepository.findAll(pageable);
+    }
+
 }
