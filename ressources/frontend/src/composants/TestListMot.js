@@ -10,6 +10,7 @@ export default class TestListMot extends React.Component{
             mots:[],
             currentPage: 1,
             motsPerPage: 20,
+            search: ''
         };
     }
 
@@ -29,9 +30,16 @@ export default class TestListMot extends React.Component{
         }));
     }
 
+
+
     changePage = event => {
         let targetPage = parseInt(event.target.value);
-        this.findAllMots(targetPage);
+        if(this.state.search){
+            this.searchData(targetPage)
+        } else {
+            this.findAllMots(targetPage);
+        }
+
         this.setState({
             currentPage: targetPage
         });
@@ -40,30 +48,66 @@ export default class TestListMot extends React.Component{
     firstPage = () => {
         let firstPage = 1;
         if(this.state.currentPage > firstPage){
+            if(this.state.search){
+            this.searchData(firstPage)
+        } else {
             this.findAllMots(firstPage);
+        }
         }
     }
     prevPage = () => {
         let prevPage = 1;
         if(this.state.currentPage > prevPage){
+            if(this.state.search){
+                this.searchData(this.state.currentPage - prevPage)
+            } else {
             this.findAllMots(this.state.currentPage - prevPage);
+            }
         }
     }
     lastPage = () => {
         let condition = Math.ceil(this.state.totalElements / this.state.motsPerPage)
         if(this.state.currentPage < condition){
+            if(this.state.search){
+            this.searchData(condition)
+        } else {
             this.findAllMots(condition);
+        }
         }
     }
     nextPage = () => {
         if(this.state.currentPage < Math.ceil(this.state.totalElements / this.state.motsPerPage)){
+            if(this.state.search){
+                this.searchData(this.state.currentPage + 1)
+            } else {
             this.findAllMots(this.state.currentPage + 1);
+            }
+
         }
+    }
+
+    searchChange = event => {
+        this.setState({
+            search : event.target.value
+        })
+    }
+
+    searchData = (currentPage) => {
+        currentPage -=1;
+        fetch('http://localhost:8080/dico/mots/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+            this.setState({
+                mots: data.content,
+                totalPages: data.totalPages,
+                totalElements: data.totalElements,
+                currentPage: data.number + 1
+            });
+        }));
     }
 
     render (){
 
-        const {mots, currentPage, totalPages} = this.state;
+        const {mots, currentPage, totalPages, search} = this.state;
+
         // const lastIndex = currentPage * motsPerPage;
         // const firstIndex = lastIndex - motsPerPage;
         // const currentMots = mots.slice(firstIndex,lastIndex);
@@ -96,7 +140,8 @@ export default class TestListMot extends React.Component{
                 <h1 className = "text-center">Dictionnaire</h1>
 
 
-
+                <input type="text" name="search" value={search} onChange={this.searchChange}/>
+                <button type="button" onClick={this.searchData}/>
                 <table className = "table">
                     <thead>
                     <tr>

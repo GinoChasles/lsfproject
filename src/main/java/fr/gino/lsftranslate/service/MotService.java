@@ -17,4 +17,5 @@ public interface MotService {
     List<Mot> findAll();
     List<Mot> findMotByGenreId(int genre_id);
     Page<Mot> findAll(Pageable pageable);
+    Page<Mot> findAll(Pageable pageable, String searchText);
 }

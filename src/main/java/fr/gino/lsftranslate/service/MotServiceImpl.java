@@ -86,4 +86,9 @@ public class MotServiceImpl implements MotService {
         return motRepository.findAll(pageable);
     }
 
+    @Override
+    public Page<Mot> findAll(Pageable pageable, String searchText) {
+        return motRepository.findAll(pageable, searchText);
+    }
+
 }

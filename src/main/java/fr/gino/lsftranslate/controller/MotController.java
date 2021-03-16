@@ -55,6 +55,13 @@ public class MotController {
 
         return ResponseEntity.ok().body(page);
     }
+    @CrossOrigin
+    @GetMapping("mots/search/{searchText}")
+    public ResponseEntity<Page<Mot>> findAll(Pageable pageable, @PathVariable(value="searchText") String searchText){
+        Page<Mot> page = motService.findAll(pageable, searchText);
+
+        return ResponseEntity.ok().body(page);
+    }
 
     @CrossOrigin
     @GetMapping("mots/genre/{id}")
