@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
 
-export default class TestListMot extends React.Component{
+export default class ListMots extends React.Component{
 
     constructor(props) {
         super(props);

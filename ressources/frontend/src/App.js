@@ -6,8 +6,7 @@ import {
     Link
 } from "react-router-dom";
 
-import TestListMot from "./composants/TestListMot";
-import SearchBar from "./composants/SearchBar/SearchBar";
+import ListMots from "./composants/ListMots";
 import Home from "./composants/Home";
 import MonCompte from "./composants/MonCompte";
 
@@ -30,7 +29,7 @@ function App() {
               </ul>
           </nav>
           <Switch>
-              <Route path="/dico/mots"><TestListMot/></Route>
+              <Route path="/dico/mots"><ListMots/></Route>
               <Route path="/compte" component={MonCompte}></Route>
               <Route path="/" component={Home}></Route>
           </Switch>
