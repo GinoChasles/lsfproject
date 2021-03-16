@@ -120,6 +120,39 @@ export default class ListMots extends React.Component{
         this.findAllMots(this.state.currentPage);
     }
 
+    notVideo = (mot) => {
+        if(mot.video === null || mot.video === undefined ){
+            return (
+                <div>
+                    <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}  onClick={this.ajouterVideo}/>
+                    <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'} alt={'icone absence vidéo'}/>
+                </div>
+            )} else {
+            return (
+                <div>
+                    <img src={process.env.PUBLIC_URL + '/img/video.svg'} alt={'icone vidéo existante'} onClick={this.afficherVideo} />
+                </div>
+            )}
+    }
+
+    ajouterVideo = () => {
+        return (
+            <div>
+                ajouter vidéo
+                {alert("ajouter video?")}
+            </div>
+        )
+    }
+
+    afficherVideo = () => {
+        return (
+            <div>
+                afficher video
+                {alert("video existante")}
+            </div>
+        )
+    }
+
     render () {
 
         const {mots, currentPage, totalPages, search} = this.state;
@@ -129,35 +162,39 @@ export default class ListMots extends React.Component{
         // const currentMots = mots.slice(firstIndex,lastIndex);
         // const totalPages = Math.round(mots.length / motsPerPage);
 
-        let videoState = this.state.mots;
-        let icone;
-        /*  console.log(videoState);*/
-        for (let el in videoState) {
-            if (el.video == null) {
-                icone =
-                    <div>
-                        <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}/>
-                        <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'} alt={'icone absence vidéo'}/>
-                    </div>
-            } else {
-                icone =
-                    <div>
-                        <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}/>
-                        <img src={process.env.PUBLIC_URL + '/img/video.svg'} alt={'icone vidéo existante'}/>
-                    </div>
-            }
-        }
-
-
 
         return (
             <div className="page">
                 <h1 className = "text-center">Dictionnaire</h1>
 
+                <div className="barre-recherche">
+                    <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1"/>
+                    <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
+                    <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
+                </div>
 
-                <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1"/>
-                <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
-                <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
+                <div className="pagination">
+                    <p>Page {currentPage} sur {totalPages}</p>
+
+                    <button type="button" disabled={currentPage === 1 ? true : false}
+                            onClick={this.firstPage}>Première</button>
+
+                    <button type="button" disabled={currentPage === 1 ? true : false}
+                            onClick={this.prevPage}>Précédente</button>
+
+
+                    <input type="number" id="currentPage" value={currentPage} max={totalPages} onChange={this.changePage} />
+
+
+                    <button type="button" disabled={currentPage === totalPages ? true : false}
+                            onClick={this.nextPage}>Suivante</button>
+
+                    <button type="button" disabled={currentPage === totalPages ? true : false}
+                            onClick={this.lastPage}>Dernière</button>
+
+                </div>
+
+
                 <table className = "table">
                     <thead>
                     <tr>
@@ -170,7 +207,7 @@ export default class ListMots extends React.Component{
                         <td> nbr de lettres </td>
                         <td> nbr de syllabes </td>
                         <td> ortho renversé </td>
-                        {/*<td> vidéo  </td>*/}
+                        <td> vidéo  </td>
                     </tr>
 
                     </thead>
@@ -188,34 +225,14 @@ export default class ListMots extends React.Component{
                                     <td> {mot.nblettres}</td>
                                     <td> {mot.nbsyll}</td>
                                     <td> {mot.orthrenv}</td>
-                                    {/*<td> {mot.video.id}</td>*/}
+                                    <td> {this.notVideo(mot)}</td>
                                 </tr>
                         )
                     }
 
                     </tbody>
-                    <tfoot>
-                        <td>Page {currentPage} sur {totalPages}</td>
-                        <td>
-                            <button type="button" disabled={currentPage === 1 ? true : false}
-                            onClick={this.firstPage}>Première</button>
-
-                            <button type="button" disabled={currentPage === 1 ? true : false}
-                            onClick={this.prevPage}>Précédente</button>
-
-                            <div>
-                                <label for="currentPage"></label>
-                                <input type="number" id="currentPage" value={currentPage} max={totalPages} onChange={this.changePage} />
-                            </div>
-
-                            <button type="button" disabled={currentPage === totalPages ? true : false}
-                            onClick={this.nextPage}>Suivante</button>
-
-                            <button type="button" disabled={currentPage === totalPages ? true : false}
-                            onClick={this.lastPage}>Dernière</button>
-                        </td>
-                    </tfoot>
                 </table>
+
             </div>
 
         )
