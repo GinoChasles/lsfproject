@@ -30,7 +30,7 @@ function App() {
               </ul>
           </nav>
           <Switch>
-              <Route path="/dico/mots"><SearchBar/> <TestListMot/></Route>
+              <Route path="/dico/mots"><TestListMot/></Route>
               <Route path="/compte" component={MonCompte}></Route>
               <Route path="/" component={Home}></Route>
           </Switch>

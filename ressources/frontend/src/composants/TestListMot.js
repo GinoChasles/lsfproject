@@ -94,17 +94,33 @@ export default class TestListMot extends React.Component{
 
     searchData = (currentPage) => {
         currentPage -=1;
-        fetch('http://localhost:8080/dico/mots/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
-            this.setState({
-                mots: data.content,
-                totalPages: data.totalPages,
-                totalElements: data.totalElements,
-                currentPage: data.number + 1
-            });
-        }));
+
+        if(this.state.search === ''){
+            fetch('http://localhost:8080/dico/mots/all/20?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+                this.setState({
+                    mots: data.content,
+                    totalPages: data.totalPages,
+                    totalElements: data.totalElements,
+                    currentPage: data.number + 1
+                });
+            }));
+        } else {
+            fetch('http://localhost:8080/dico/mots/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+                this.setState({
+                    mots: data.content,
+                    totalPages: data.totalPages,
+                    totalElements: data.totalElements,
+                    currentPage: data.number + 1
+                });
+            }));
+        }
+    }
+    cancelSearch = () => {
+        this.setState({"search":''});
+        this.findAllMots(this.state.currentPage);
     }
 
-    render (){
+    render () {
 
         const {mots, currentPage, totalPages, search} = this.state;
 
@@ -115,21 +131,20 @@ export default class TestListMot extends React.Component{
 
         let videoState = this.state.mots;
         let icone;
-  /*  console.log(videoState);*/
-        for(let el in videoState){
-        if(el.video == null){
-             icone =
-            <div>
-                <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}  />
-                <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'} alt={'icone absence vidéo'}/>
-            </div>
-        } else
-            {
-             icone =
-                <div>
-                    <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}/>
-                    <img src={process.env.PUBLIC_URL + '/img/video.svg'} alt={'icone vidéo existante'}/>
-                </div>
+        /*  console.log(videoState);*/
+        for (let el in videoState) {
+            if (el.video == null) {
+                icone =
+                    <div>
+                        <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}/>
+                        <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'} alt={'icone absence vidéo'}/>
+                    </div>
+            } else {
+                icone =
+                    <div>
+                        <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}/>
+                        <img src={process.env.PUBLIC_URL + '/img/video.svg'} alt={'icone vidéo existante'}/>
+                    </div>
             }
         }
 
@@ -140,8 +155,9 @@ export default class TestListMot extends React.Component{
                 <h1 className = "text-center">Dictionnaire</h1>
 
 
-                <input type="text" name="search" value={search} onChange={this.searchChange}/>
-                <button type="button" onClick={this.searchData}/>
+                <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1"/>
+                <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
+                <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
                 <table className = "table">
                     <thead>
                     <tr>
@@ -189,7 +205,7 @@ export default class TestListMot extends React.Component{
 
                             <div>
                                 <label for="currentPage"></label>
-                                <input type="number" id="currentPage" value={currentPage} onChange={this.changePage} />
+                                <input type="number" id="currentPage" value={currentPage} max={totalPages} onChange={this.changePage} />
                             </div>
 
                             <button type="button" disabled={currentPage === totalPages ? true : false}
