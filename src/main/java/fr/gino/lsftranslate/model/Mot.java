@@ -1,8 +1,9 @@
 package fr.gino.lsftranslate.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,7 +12,10 @@ import javax.persistence.*;
 @Table(name= "mot", schema= "lsfproject")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Mot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id",nullable = false)
@@ -56,6 +60,5 @@ public class Mot {
     @JoinColumn(name="nombre", nullable = true)
     @JsonManagedReference
     private Nombre nombre;
-
 
 }
