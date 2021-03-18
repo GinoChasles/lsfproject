@@ -153,6 +153,33 @@ export default class ListMots extends React.Component{
         )
     }
 
+    notGenre = (mot) => {
+        if(mot.genre === null || mot.genre === undefined ){
+            return (
+                <div>
+
+                </div>
+            )} else {
+            return (
+                <div>
+                    {mot.genre.nom}
+                </div>
+            )}
+    }
+
+    notNombre = (mot) => {
+        if(mot.nombre === null || mot.nombre === undefined ){
+            return (
+                <div>
+
+                </div>
+            )} else {
+            return (
+                <div>
+                    {mot.nombre.nom}
+                </div>
+            )}
+    }
     render () {
 
         const {mots, currentPage, totalPages, search} = this.state;
@@ -201,8 +228,8 @@ export default class ListMots extends React.Component{
                         <td>Orthographe</td>
                         <td> lemme du mot</td>
                         <td> catégorie gramaticale</td>
-                        {/*<td> genre</td>*/}
-                        {/*<td>  nombre</td>*/}
+                        <td> genre</td>
+                        <td>  nombre</td>
                         <td>  info verbale</td>
                         <td> nbr de lettres </td>
                         <td> nbr de syllabes </td>
@@ -219,8 +246,8 @@ export default class ListMots extends React.Component{
                                     <td> {mot.ortho}</td>
                                     <td> {mot.lemme}</td>
                                     <td> {mot.catgram.nom}</td>
-                                    {/*<td> {mot.genre.id}</td>*/}
-                                    {/*<td> {mot.nombre.id}</td>*/}
+                                    <td> {this.notGenre(mot)}</td>
+                                    <td> {this.notNombre(mot)}</td>
                                     <td> {mot.infover}</td>
                                     <td> {mot.nblettres}</td>
                                     <td> {mot.nbsyll}</td>
