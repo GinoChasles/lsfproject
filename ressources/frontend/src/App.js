@@ -21,7 +21,7 @@ function App() {
                       <Link to="/dico/mots" className="nav-links">Dictionnaire</Link>
                   </li>
                   <li>
-                      <Link to="/"><img id="logo-nav" src={process.env.PUBLIC_URL + '/img/logo1.png'} alt="logo lsf4all" /></Link>
+                      <Link to="/"><img id="logo-nav" src={process.env.PUBLIC_URL + '/img/logo/logo1.png'} alt="logo lsf4all" /></Link>
                   </li>
                   <li>
                       <Link to="/compte" className="nav-links">Mon Compte</Link>

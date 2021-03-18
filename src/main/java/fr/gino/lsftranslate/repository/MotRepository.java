@@ -16,8 +16,7 @@ public interface MotRepository extends PagingAndSortingRepository<Mot, Integer> 
     List<Mot> findMotByGenreId(int genre_id);
 
     Page<Mot> findAll(Pageable pageable);
-    List<Mot> findAll();
 
     @Query("From Mot b WHERE b.ortho=:searchText OR b.lemme=:searchText")
-    Page<Mot> findAll(Pageable pageable, String searchText);
+    Page<Mot> findAllMotsByOrthoOrLemme(Pageable pageable, String searchText);
 }

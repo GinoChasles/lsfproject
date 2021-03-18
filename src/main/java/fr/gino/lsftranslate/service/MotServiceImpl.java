@@ -59,22 +59,8 @@ public class MotServiceImpl implements MotService {
         return null;
     }
 
-    @Override
-    public List<Mot> findAllMots(Integer pageNo, Integer pageSize, String sortBy) {
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
-        Page<Mot> pageResult = motRepository.findAll(paging);
 
-        if(pageResult.hasContent()){
-            return pageResult.getContent();
-        } else {
-            return new ArrayList<Mot>();
-        }
-    }
 
-    @Override
-    public List<Mot> findAll() {
-        return motRepository.findAll();
-    }
 
     @Override
     public List<Mot> findMotByGenreId(int genre_id) {
@@ -87,8 +73,8 @@ public class MotServiceImpl implements MotService {
     }
 
     @Override
-    public Page<Mot> findAll(Pageable pageable, String searchText) {
-        return motRepository.findAll(pageable, searchText);
+    public Page<Mot> findAllMotsByOrthoOrLemme(Pageable pageable, String searchText) {
+        return motRepository.findAllMotsByOrthoOrLemme(pageable, searchText);
     }
 
 }

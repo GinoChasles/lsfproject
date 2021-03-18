@@ -33,23 +33,7 @@ public class MotController {
     }
 
     @CrossOrigin
-    @GetMapping("mots")
-    public ResponseEntity<List<Mot>> findAllMots(@RequestParam(defaultValue="0") Integer pageNo,
-                                                 @RequestParam(defaultValue = "20") Integer pageSize,
-                                                 @RequestParam(defaultValue = "id") String sortBy){
-        List<Mot> list = motService.findAllMots(pageNo,pageSize,sortBy);
-
-        return new ResponseEntity<List<Mot>>(list, new HttpHeaders(), HttpStatus.OK);
-    }
-    @CrossOrigin
-    @GetMapping("mots/all")
-    public ResponseEntity<List<Mot>> findAll(){
-        List<Mot> list = motService.findAll();
-
-        return ResponseEntity.ok().body(list);
-    }
-    @CrossOrigin
-    @GetMapping("mots/all/20")
+    @GetMapping("mots/")
     public ResponseEntity<Page<Mot>> findAll(Pageable pageable){
         Page<Mot> page = motService.findAll(pageable);
 
@@ -57,8 +41,8 @@ public class MotController {
     }
     @CrossOrigin
     @GetMapping("mots/search/{searchText}")
-    public ResponseEntity<Page<Mot>> findAll(Pageable pageable, @PathVariable(value="searchText") String searchText){
-        Page<Mot> page = motService.findAll(pageable, searchText);
+    public ResponseEntity<Page<Mot>> findAllMotsByOrthoOrLemme(Pageable pageable, @PathVariable(value="searchText") String searchText){
+        Page<Mot> page = motService.findAllMotsByOrthoOrLemme(pageable, searchText);
 
         return ResponseEntity.ok().body(page);
     }
@@ -104,8 +88,4 @@ public class MotController {
         return ResponseEntity.accepted().build();
     }
 
-@RequestMapping("/")
-    public String test(){
-        return "test";
-}
 }

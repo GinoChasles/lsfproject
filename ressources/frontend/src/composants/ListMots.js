@@ -1,6 +1,7 @@
 import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
+import InfosMots from "./InfosMots";
 
 export default class ListMots extends React.Component{
 
@@ -20,7 +21,7 @@ export default class ListMots extends React.Component{
 
     findAllMots(currentPage){
         currentPage -=1;
-        fetch('http://localhost:8080/dico/mots/all/20?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+        fetch('http://localhost:8080/dico/mots/?page=' + currentPage + '&size=' + this.state.motsPerPage).then((res) => res.json().then((data) => {
             this.setState({
                 mots: data.content,
                 totalPages: data.totalPages,
@@ -34,6 +35,7 @@ export default class ListMots extends React.Component{
 
     changePage = event => {
         let targetPage = parseInt(event.target.value);
+
         if(this.state.search){
             this.searchData(targetPage)
         } else {
@@ -47,12 +49,12 @@ export default class ListMots extends React.Component{
 
     firstPage = () => {
         let firstPage = 1;
-        if(this.state.currentPage > firstPage){
-            if(this.state.search){
-            this.searchData(firstPage)
-        } else {
-            this.findAllMots(firstPage);
-        }
+        if(this.state.currentPage > firstPage) {
+            if (this.state.search) {
+                this.searchData(firstPage)
+            } else {
+                this.findAllMots(firstPage);
+            }
         }
     }
     prevPage = () => {
@@ -61,18 +63,18 @@ export default class ListMots extends React.Component{
             if(this.state.search){
                 this.searchData(this.state.currentPage - prevPage)
             } else {
-            this.findAllMots(this.state.currentPage - prevPage);
+                this.findAllMots(this.state.currentPage - prevPage);
             }
         }
     }
     lastPage = () => {
         let condition = Math.ceil(this.state.totalElements / this.state.motsPerPage)
-        if(this.state.currentPage < condition){
-            if(this.state.search){
-            this.searchData(condition)
-        } else {
-            this.findAllMots(condition);
-        }
+        if(this.state.currentPage < condition) {
+            if (this.state.search) {
+                this.searchData(condition)
+            } else {
+                this.findAllMots(condition);
+            }
         }
     }
     nextPage = () => {
@@ -80,7 +82,7 @@ export default class ListMots extends React.Component{
             if(this.state.search){
                 this.searchData(this.state.currentPage + 1)
             } else {
-            this.findAllMots(this.state.currentPage + 1);
+                this.findAllMots(this.state.currentPage + 1);
             }
 
         }
@@ -124,13 +126,15 @@ export default class ListMots extends React.Component{
         if(mot.video === null || mot.video === undefined ){
             return (
                 <div>
-                    <img src={process.env.PUBLIC_URL + '/img/ajoutvideo.svg'} alt={'icone ajout vidéo'}  onClick={this.ajouterVideo}/>
-                    <img src={process.env.PUBLIC_URL + '/img/notvideo.svg'} alt={'icone absence vidéo'}/>
+                    <img src={process.env.PUBLIC_URL + '/img/icones/ajoutvideo.svg'} alt={'icone ajout vidéo'}
+                         onClick={this.ajouterVideo}/>
+                    <img src={process.env.PUBLIC_URL + '/img/icones/notvideo.svg'} alt={'icone absence vidéo'}/>
                 </div>
             )} else {
             return (
                 <div>
-                    <img src={process.env.PUBLIC_URL + '/img/video.svg'} alt={'icone vidéo existante'} onClick={this.afficherVideo} />
+                    <img src={process.env.PUBLIC_URL + '/img/icones/video.svg'} alt={'icone vidéo existante'}
+                         onClick={this.afficherVideo}/>
                 </div>
             )}
     }
@@ -180,6 +184,9 @@ export default class ListMots extends React.Component{
                 </div>
             )}
     }
+
+
+
     render () {
 
         const {mots, currentPage, totalPages, search} = this.state;
@@ -242,7 +249,7 @@ export default class ListMots extends React.Component{
                     {
                         mots.map(
                             mot =>
-                                <tr key = {mot.id}>
+                                <tr key = {mot.id}  >
                                     <td> {mot.ortho}</td>
                                     <td> {mot.lemme}</td>
                                     <td> {mot.catgram.nom}</td>
