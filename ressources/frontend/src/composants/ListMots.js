@@ -11,7 +11,11 @@ export default class ListMots extends React.Component{
             currentPage: 1,
             motsPerPage: 20,
             search: '',
-            idMot: 1
+            idMot: 1,
+            clicked: null
+        };
+        this.handleClick = (props) => {
+            this.setState({clicked: props});
         };
     }
 
@@ -140,21 +144,15 @@ export default class ListMots extends React.Component{
     }
 
     ajouterVideo = () => {
-        return (
-            <div>
-                ajouter vidéo
-                {alert("ajouter video?")}
-            </div>
-        )
+        this.handleClick("ajout")
+                // alert("ajouter video?")
+
     }
 
     afficherVideo = () => {
-        return (
-            <div>
-                afficher video
-                {alert("video existante")}
-            </div>
-        )
+        this.handleClick("video")
+                // {alert("video existante")}
+
     }
 
     notGenre = (mot) => {
@@ -279,7 +277,25 @@ export default class ListMots extends React.Component{
                     }
                     </tbody>
                 </table>
+
                 {console.log(this.state.idMot)}
+
+                {this.state.clicked !== "video" ? null : (
+                    <div>
+                       <p>La vidéo</p>
+                        <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
+                                allowFullScreen></iframe>
+                    </div>
+                )}
+
+                {this.state.clicked !== "ajout" ? null : (
+                    <div>
+                   <form>
+                    <input type={"text"}/>
+                    <button type={"submit"}>Envoyer</button>
+                   </form>
+                    </div>
+                )}
             </div>
 
         )
