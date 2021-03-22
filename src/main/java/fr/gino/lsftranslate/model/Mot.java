@@ -43,22 +43,18 @@ public class Mot {
 
     @OneToOne
     @JoinColumn(name="video", referencedColumnName = "id")
-    @JsonManagedReference
     private Video video;
 
     @ManyToOne
     @JoinColumn(name="catgram", nullable = false)
-    @JsonManagedReference
     private CatGram catgram;
 
     @ManyToOne
     @JoinColumn(name="genre", nullable = true)
-    @JsonManagedReference
     private Genre genre;
 
     @ManyToOne
     @JoinColumn(name="nombre", nullable = true)
-    @JsonManagedReference
     private Nombre nombre;
 
 }
