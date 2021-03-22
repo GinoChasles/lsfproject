@@ -1,3 +1,10 @@
 .table {
     width: 100%;
 }
+.infos-mots {
+    position:relative;
+    top:150px;
+    width:350px;
+    height:350px;
+    background-color: black;
+}

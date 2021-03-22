@@ -1,7 +1,6 @@
 import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
-import InfosMots from "./InfosMots";
 
 export default class ListMots extends React.Component{
 
@@ -11,7 +10,8 @@ export default class ListMots extends React.Component{
             mots:[],
             currentPage: 1,
             motsPerPage: 20,
-            search: ''
+            search: '',
+            idMot: 1
         };
     }
 
@@ -185,7 +185,20 @@ export default class ListMots extends React.Component{
             )}
     }
 
+    fetchMotParId = () => {
+        fetch('http://localhost:8080/dico/mots/' + this.state.idMot ).then(res => res.json()).then((data) => {
 
+            return (
+                <div className="infos-mots">
+                    <p>infos verbales:{data.ortho}</p>
+                    <p>infos verbale</p>
+                    <p>infos verbales:{data.lemme}</p>
+                    <p>infos verbales:{data.nblettres}</p>
+                </div>
+            )
+    console.log(this.state.idMot)
+        })
+    }
 
     render () {
 
@@ -249,7 +262,7 @@ export default class ListMots extends React.Component{
                     {
                         mots.map(
                             mot =>
-                                <tr key = {mot.id}  >
+                                <tr key = {mot.id} onClick={()=>this.setState({idMot: mot.id})}>
                                     <td> {mot.ortho}</td>
                                     <td> {mot.lemme}</td>
                                     <td> {mot.catgram.nom}</td>
@@ -260,13 +273,13 @@ export default class ListMots extends React.Component{
                                     <td> {mot.nbsyll}</td>
                                     <td> {mot.orthrenv}</td>
                                     <td> {this.notVideo(mot)}</td>
+
                                 </tr>
                         )
                     }
-
                     </tbody>
                 </table>
-
+                {console.log(this.state.idMot)}
             </div>
 
         )
