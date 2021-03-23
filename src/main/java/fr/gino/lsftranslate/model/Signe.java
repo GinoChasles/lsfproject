@@ -15,6 +15,14 @@ public class Signe {
     @OneToOne(mappedBy = "signe")
     private Lettre lettre;
 
+    public Signe() {}
+
+    public Signe(Integer id, String url, Lettre lettre) {
+        this.id = id;
+        this.url = url;
+        this.lettre = lettre;
+    }
+
     public long getId() {
         return id;
     }
@@ -30,4 +38,6 @@ public class Signe {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
 }
