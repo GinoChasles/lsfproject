@@ -1,12 +1,12 @@
 package fr.gino.lsftranslate.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name= "mot", schema= "lsfproject")
@@ -21,21 +21,27 @@ public class Mot {
     @Column(name="id",nullable = false)
     private Integer id;
 
+    @NotBlank(message="ortho is necessary")
+    @Pattern(regexp = "([a-z]+)", message = "ortho only has minuscules letters")
     @Column(name= "ortho", nullable = false)
     private String ortho;
 
+    @NotBlank(message = "lemme is necessary")
     @Column(name="lemme", nullable = false)
     private String lemme;
 
     @Column(name="infover")
     private String infover;
 
+    @Positive
     @Column(name="nblettres", nullable = false)
     private int nblettres;
 
+    @Positive
     @Column(name="nbsyll", nullable = false)
     private int nbsyll;
 
+    @NotBlank(message = "orthrenv is necessary")
     @Column(name="orthrenv", nullable = false)
     private String orthrenv;
 

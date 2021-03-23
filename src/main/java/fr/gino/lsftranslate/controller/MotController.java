@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,13 +61,13 @@ public class MotController {
 
     @CrossOrigin
     @PostMapping("/mots")
-    public ResponseEntity<Mot> addMot(@RequestBody Mot mot){
+    public ResponseEntity<Mot> addMot(@Valid @RequestBody Mot mot){
         return ResponseEntity.ok().body(motService.insert(mot));
     }
 
     @CrossOrigin
     @PutMapping("/mots/{id}")
-    ResponseEntity<Mot> updateMot(@PathVariable(value = "id") int id, @RequestBody Mot mot){
+    ResponseEntity<Mot> updateMot(@PathVariable(value = "id") int id,@Valid @RequestBody Mot mot){
         Mot updateMot = motService.update(id, mot);
         if(updateMot == null){
             return ResponseEntity.notFound().build();
