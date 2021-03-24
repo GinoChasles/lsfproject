@@ -30,9 +30,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `lsfproject`.`genre`
+-- Table `lsfproject`.`gender`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lsfproject`.`genre` (
+CREATE TABLE IF NOT EXISTS `lsfproject`.`gender` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
@@ -63,9 +63,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `lsfproject`.`mot`
+-- Table `lsfproject`.`word`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lsfproject`.`mot` (
+CREATE TABLE IF NOT EXISTS `lsfproject`.`word` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ortho` VARCHAR(75) NOT NULL,
   `lemme` VARCHAR(75) NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `lsfproject`.`mot` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_mot_genre1`
     FOREIGN KEY (`genre_id`)
-    REFERENCES `lsfproject`.`genre` (`id`)
+    REFERENCES `lsfproject`.`gender` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_mot_nombre1`
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `lsfproject`.`mot_has_theme` (
   INDEX `fk_word_has_theme_word_idx` (`mot_id` ASC) VISIBLE,
   CONSTRAINT `fk_word_has_theme_word`
     FOREIGN KEY (`mot_id`)
-    REFERENCES `lsfproject`.`mot` (`id`)
+    REFERENCES `lsfproject`.`word` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_word_has_theme_theme1`

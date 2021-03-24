@@ -32,13 +32,13 @@ CREATE TABLE `catgram` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `genre`
+-- Table structure for table `gender`
 --
 
-DROP TABLE IF EXISTS `genre`;
+DROP TABLE IF EXISTS `gender`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `genre` (
+CREATE TABLE `gender` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -47,15 +47,15 @@ CREATE TABLE `genre` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `lettre`
+-- Table structure for table `letter`
 --
 
 DROP TABLE IF EXISTS `letter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lettre` (
+CREATE TABLE `letter` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `lettre` varchar(255) DEFAULT NULL,
+  `letter` varchar(255) DEFAULT NULL,
   `signe_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK8rjkpikeepo02e7hujbkyig9n` (`signe_id`),
@@ -65,18 +65,18 @@ CREATE TABLE `lettre` (
 
 --
 --
--- Table structure for table `mot`
+-- Table structure for table `word`
 --
 
-DROP TABLE IF EXISTS `mot`;
+DROP TABLE IF EXISTS `word`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `mot` (
+CREATE TABLE `word` (
   `id` int NOT NULL AUTO_INCREMENT,
   `ortho` varchar(75) NOT NULL,
   `lemme` varchar(75) NOT NULL,
   `catgram` int DEFAULT NULL,
-  `genre` int DEFAULT NULL,
+  `gender` int DEFAULT NULL,
   `nombre` int DEFAULT NULL,
   `infover` varchar(75) DEFAULT NULL,
   `nblettres` int DEFAULT NULL,
@@ -85,15 +85,15 @@ CREATE TABLE `mot` (
   `video` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idword_UNIQUE` (`id`),
-  KEY `id_genre_idx` (`genre`),
+  KEY `id_genre_idx` (`gender`),
   KEY `FKr5rcvo8fk8xwekgymjfnykxtq` (`catgram`),
   KEY `FKf5w3p120310e0r8n4cou8y7s9` (`video`),
   KEY `FKr9ngjw2smakfww37gmmktxjfu` (`nombre`),
-  CONSTRAINT `FKex8n6wf33bevigy8qlf3leuyn` FOREIGN KEY (`nombre`) REFERENCES `genre` (`id`),
+  CONSTRAINT `FKex8n6wf33bevigy8qlf3leuyn` FOREIGN KEY (`nombre`) REFERENCES `gender` (`id`),
   CONSTRAINT `FKf5w3p120310e0r8n4cou8y7s9` FOREIGN KEY (`video`) REFERENCES `video` (`id`),
   CONSTRAINT `FKr5rcvo8fk8xwekgymjfnykxtq` FOREIGN KEY (`catgram`) REFERENCES `catgram` (`id`),
   CONSTRAINT `FKr9ngjw2smakfww37gmmktxjfu` FOREIGN KEY (`nombre`) REFERENCES `nombre` (`id`),
-  CONSTRAINT `id_genre` FOREIGN KEY (`genre`) REFERENCES `genre` (`id`)
+  CONSTRAINT `id_genre` FOREIGN KEY (`gender`) REFERENCES `gender` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=142695 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

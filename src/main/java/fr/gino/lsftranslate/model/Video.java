@@ -20,7 +20,7 @@ public class Video {
 
     @OneToOne(mappedBy = "video")
     @JsonBackReference
-    private Mot mot;
+    private Word word;
 
 
 }

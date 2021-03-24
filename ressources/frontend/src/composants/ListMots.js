@@ -25,7 +25,7 @@ export default class ListMots extends React.Component{
 
     findAllMots(currentPage){
         currentPage -=1;
-        fetch('http://localhost:8080/dico/mots/?page=' + currentPage + '&size=' + this.state.motsPerPage).then((res) => res.json().then((data) => {
+        fetch('http://localhost:8080/dico/words/?page=' + currentPage + '&size=' + this.state.motsPerPage).then((res) => res.json().then((data) => {
             this.setState({
                 mots: data.content,
                 totalPages: data.totalPages,
@@ -102,7 +102,7 @@ export default class ListMots extends React.Component{
         currentPage -=1;
 
         if(this.state.search === ''){
-            fetch('http://localhost:8080/dico/mots/all/20?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+            fetch('http://localhost:8080/dico/words/all/20?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
                 this.setState({
                     mots: data.content,
                     totalPages: data.totalPages,
@@ -111,7 +111,7 @@ export default class ListMots extends React.Component{
                 });
             }));
         } else {
-            fetch('http://localhost:8080/dico/mots/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+            fetch('http://localhost:8080/dico/words/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
                 this.setState({
                     mots: data.content,
                     totalPages: data.totalPages,
@@ -156,7 +156,7 @@ export default class ListMots extends React.Component{
     }
 
     notGenre = (mot) => {
-        if(mot.genre === null || mot.genre === undefined ){
+        if(mot.gender === null || mot.gender === undefined ){
             return (
                 <div>
 
@@ -164,13 +164,13 @@ export default class ListMots extends React.Component{
             )} else {
             return (
                 <div>
-                    {mot.genre.nom}
+                    {mot.gender.name}
                 </div>
             )}
     }
 
     notNombre = (mot) => {
-        if(mot.nombre === null || mot.nombre === undefined ){
+        if(mot.number === null || mot.number === undefined ){
             return (
                 <div>
 
@@ -178,7 +178,7 @@ export default class ListMots extends React.Component{
             )} else {
             return (
                 <div>
-                    {mot.nombre.nom}
+                    {mot.number.name}
                 </div>
             )}
     }
@@ -188,10 +188,10 @@ export default class ListMots extends React.Component{
 
             return (
                 <div className="infos-mots">
-                    <p>infos verbales:{data.ortho}</p>
+                    <p>infos verbales:{data.spelling}</p>
                     <p>infos verbale</p>
-                    <p>infos verbales:{data.lemme}</p>
-                    <p>infos verbales:{data.nblettres}</p>
+                    <p>infos verbales:{data.lemma}</p>
+                    <p>infos verbales:{data.nbletters}</p>
                 </div>
             )
     console.log(this.state.idMot)
@@ -261,15 +261,15 @@ export default class ListMots extends React.Component{
                         mots.map(
                             mot =>
                                 <tr key = {mot.id} onClick={()=>this.setState({idMot: mot.id})}>
-                                    <td> {mot.ortho}</td>
-                                    <td> {mot.lemme}</td>
-                                    <td> {mot.catgram.nom}</td>
+                                    <td> {mot.spelling}</td>
+                                    <td> {mot.lemma}</td>
+                                    <td> {mot.catgram.name}</td>
                                     <td> {this.notGenre(mot)}</td>
                                     <td> {this.notNombre(mot)}</td>
                                     <td> {mot.infover}</td>
-                                    <td> {mot.nblettres}</td>
+                                    <td> {mot.nbletters}</td>
                                     <td> {mot.nbsyll}</td>
-                                    <td> {mot.orthrenv}</td>
+                                    <td> {mot.reverspel}</td>
                                     <td> {this.notVideo(mot)}</td>
 
                                 </tr>

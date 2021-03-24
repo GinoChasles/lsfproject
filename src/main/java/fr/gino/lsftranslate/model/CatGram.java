@@ -1,13 +1,11 @@
 package fr.gino.lsftranslate.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -18,10 +16,10 @@ public class CatGram {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="nom", nullable = false)
-    private String nom;
+    @Column(name="name", nullable = false)
+    private String name;
 
     @OneToMany(mappedBy = "catgram", fetch = FetchType.LAZY)
     @JsonBackReference
-    private List<Mot> mots;
+    private List<Word> words;
 }

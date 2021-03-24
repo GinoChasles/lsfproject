@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS `lsfproject`.`video` (
 
 
 -- -----------------------------------------------------
--- Table `lsfproject`.`genre`
+-- Table `lsfproject`.`gender`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lsfproject`.`genre` (
+CREATE TABLE IF NOT EXISTS `lsfproject`.`gender` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(45) NULL,
     PRIMARY KEY (`id`),
@@ -76,15 +76,15 @@ CREATE TABLE IF NOT EXISTS `lsfproject`.`signe` (
 
 
 -- -----------------------------------------------------
--- Table `lsfproject`.`lettre`
+-- Table `lsfproject`.`letter`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lsfproject`.`lettre` (
+CREATE TABLE IF NOT EXISTS `lsfproject`.`letter` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `lettre` VARCHAR(5) NOT NULL,
+    `letter` VARCHAR(5) NOT NULL,
     `signe_id` INT NOT NULL,
     PRIMARY KEY (`id`, `signe_id`),
     UNIQUE INDEX `idlettre_UNIQUE` (`id` ASC) VISIBLE,
-    UNIQUE INDEX `lettre_UNIQUE` (`lettre` ASC) VISIBLE,
+    UNIQUE INDEX `lettre_UNIQUE` (`letter` ASC) VISIBLE,
     INDEX `fk_lettre_signe1_idx` (`signe_id` ASC) VISIBLE,
     CONSTRAINT `fk_lettre_signe1`
     FOREIGN KEY (`signe_id`)
@@ -95,14 +95,14 @@ CREATE TABLE IF NOT EXISTS `lsfproject`.`lettre` (
 
 
 -- -----------------------------------------------------
--- Table `lsfproject`.`mot`
+-- Table `lsfproject`.`word`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lsfproject`.`mot` (
+CREATE TABLE IF NOT EXISTS `lsfproject`.`word` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `ortho` VARCHAR(75) NOT NULL,
     `lemme` VARCHAR(75) NOT NULL,
     `catgram` VARCHAR(45) NULL,
-    `genre` VARCHAR(70) NULL,
+    `gender` VARCHAR(70) NULL,
     `nombre` VARCHAR(45) NULL,
     `infover` VARCHAR(75) NULL,
     `nblettres` INT NULL,
