@@ -39,5 +39,4 @@ public class Sign {
         this.url = url;
     }
 
-
 }

@@ -1,11 +1,11 @@
-INSERT INTO lsfproject.gender (nom)
+INSERT INTO lsfproject.gender (name)
 VALUES ('m'),('f');
 
 
-INSERT INTO nombre (nom)
+INSERT INTO lsfproject.number (name)
 VALUES  ('s'),('p');
 
-INSERT INTO catGram (nom)
+INSERT INTO lsfproject.catGram (name)
 VALUES
 ('ADJ'),
 ('ADJ:dem'),

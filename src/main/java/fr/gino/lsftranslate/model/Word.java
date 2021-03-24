@@ -8,12 +8,13 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-@Entity
-@Table(name= "Word", schema= "lsfproject")
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name= "Word", schema= "lsfproject")
 public class Word {
 
     @Id
@@ -45,12 +46,6 @@ public class Word {
     @Column(name="reverspel", nullable = false)
     private String reverspel;
 
-
-
-    @OneToOne
-    @JoinColumn(name="video", referencedColumnName = "id")
-    private Video video;
-
     @ManyToOne
     @JoinColumn(name="catgram", nullable = false)
     private CatGram catgram;
@@ -62,5 +57,9 @@ public class Word {
     @ManyToOne
     @JoinColumn(name="number", nullable = true)
     private Number number;
+
+    @OneToOne
+    @JoinColumn(name="video", referencedColumnName = "id")
+    private Video video;
 
 }

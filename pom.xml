@@ -11,7 +11,7 @@
     <groupId>fr.gino</groupId>
     <artifactId>lsftranslate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lsftranslate</name>
+    <name>lsf4all</name>
     <description>lsf translate</description>
     <properties>
         <java.version>11</java.version>
