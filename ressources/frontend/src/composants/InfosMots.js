@@ -9,26 +9,36 @@ export default class InfosMots extends React.Component{
         }
     }
 
-    fetchMotParId = () => {
-        fetch("http://localhost:8080/dico/mots/" + this.state.id ).then(res => res.json()).then((data) => {
+    fetchMotParId = (id) => {
+        fetch("http://localhost:8080/dico/words/" + id ).then(res => res.json()).then((data) => {
             this.setState({
                 mot:data
             })
-            console.log(data.id)
-            console.log(this.mot)
-            console.log(this.state.id)
         })
     }
 
     render()
     {
         return(
-            <div className={"infos-mots"}>
-                {/*<p>genre:{this.state.mot.genre}</p>*/}
-                <p>nombre:{this.state.mot.nombre}</p>
-                <p>infos verbales:{this.props.mot.ortho}</p>
-                <p>testteststestestes</p>
-            </div>
+
+                {
+                    this.mot.map(
+                        mot =>
+                            <tr key = {mot.id} onClick={()=>this.fetchMotParId(mot.id)}>
+                                <td> {mot.spelling}</td>
+                                <td> {mot.lemma}</td>
+                                <td> {mot.catgram.name}</td>
+                                <td> {this.notGenre(mot)}</td>
+                                <td> {this.notNombre(mot)}</td>
+                                <td> {mot.infover}</td>
+                                <td> {mot.nbletters}</td>
+                                <td> {mot.nbsyll}</td>
+                                <td> {mot.reverspel}</td>
+                                <td> {this.notVideo(mot)}</td>
+
+                            </tr>
+                    )
+                }
         )
     }
 }

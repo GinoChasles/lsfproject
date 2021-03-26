@@ -18,4 +18,5 @@ public interface WordRepository extends PagingAndSortingRepository<Word, Integer
     @Query("From Word b WHERE b.spelling=:searchText OR b.lemma=:searchText")
     Page<Word> findAllWordsBySpellingOrLemma(Pageable pageable, String searchText);
 
+
 }

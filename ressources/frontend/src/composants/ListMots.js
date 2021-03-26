@@ -183,9 +183,11 @@ export default class ListMots extends React.Component{
             )}
     }
 
-    fetchMotParId = () => {
-        fetch('http://localhost:8080/dico/mots/' + this.state.idMot ).then(res => res.json()).then((data) => {
-
+    fetchMotParId = (id) => {
+        fetch('http://localhost:8080/dico/words/' + id ).then(res => res.json()).then((data) => {
+        this.setState({
+            idMot: id
+        })
             return (
                 <div className="infos-mots">
                     <p>infos verbales:{data.spelling}</p>
@@ -260,7 +262,7 @@ export default class ListMots extends React.Component{
                     {
                         mots.map(
                             mot =>
-                                <tr key = {mot.id} onClick={()=>this.setState({idMot: mot.id})}>
+                                <tr key = {mot.id} onClick={()=>this.fetchMotParId(mot.id)}>
                                     <td> {mot.spelling}</td>
                                     <td> {mot.lemma}</td>
                                     <td> {mot.catgram.name}</td>

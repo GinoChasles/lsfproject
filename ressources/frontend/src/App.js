@@ -30,8 +30,8 @@ function App() {
           </nav>
           <Switch>
               <Route path="/dico/mots"><ListMots/></Route>
-              <Route path="/compte" component={MonCompte}></Route>
-              <Route path="/" component={Home}></Route>
+              <Route path="/compte" component={MonCompte}/>
+              <Route path="/" component={Home}/>
           </Switch>
     </div>
       </Router>
