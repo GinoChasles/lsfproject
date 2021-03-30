@@ -17,7 +17,6 @@ import java.util.Optional;
 public class WordController {
     @Autowired
     WordService wordService;
-
     @CrossOrigin
     @GetMapping("words/{id}")
     public ResponseEntity<Optional<Word>> findById(@PathVariable(value = "id") int id){

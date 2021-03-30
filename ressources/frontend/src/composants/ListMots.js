@@ -211,16 +211,17 @@ export default class ListMots extends React.Component{
 
 
         return (
-            <div className="page">
+            <section className="page">
                 <h1 className = "text-center">Dictionnaire</h1>
 
-                <div className="barre-recherche">
+                <article className="barre-recherche">
+                    <label for="search" className="visuallyhidden">Mot à rechercher</label>
                     <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1"/>
                     <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
                     <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
-                </div>
+                </article>
 
-                <div className="pagination">
+                <article className="pagination">
                     <p>Page {currentPage} sur {totalPages}</p>
 
                     <button type="button" disabled={currentPage === 1 ? true : false}
@@ -229,8 +230,8 @@ export default class ListMots extends React.Component{
                     <button type="button" disabled={currentPage === 1 ? true : false}
                             onClick={this.prevPage}>Précédente</button>
 
-
-                    <input type="number" id="currentPage" value={currentPage} max={totalPages} onChange={this.changePage} />
+                    <label htmlFor="currentPage" className="visuallyhidden">numéro de page</label>
+                    <input type="number" name="currentPage" id="currentPage" value={currentPage} max={totalPages} onChange={this.changePage} />
 
 
                     <button type="button" disabled={currentPage === totalPages ? true : false}
@@ -239,7 +240,7 @@ export default class ListMots extends React.Component{
                     <button type="button" disabled={currentPage === totalPages ? true : false}
                             onClick={this.lastPage}>Dernière</button>
 
-                </div>
+                </article>
 
 
                 <table className = "table">
@@ -298,7 +299,7 @@ export default class ListMots extends React.Component{
                    </form>
                     </div>
                 )}
-            </div>
+            </section>
 
         )
     }

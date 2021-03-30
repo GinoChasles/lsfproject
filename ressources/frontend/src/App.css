@@ -1,4 +1,4 @@
-#routeur {
+#root {
     min-height: 100vh; /* will cover the 100% of viewport */
     overflow: hidden;
     display: block;
@@ -10,7 +10,16 @@
     top:80px;
     text-align: center;
 }
-
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
 
 .nav-menu {
     background-color: #DFF7F1;

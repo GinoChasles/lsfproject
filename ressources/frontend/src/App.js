@@ -9,12 +9,12 @@ import {
 import ListMots from "./composants/ListMots";
 import Home from "./composants/Home";
 import MonCompte from "./composants/MonCompte";
+import Footer from "./composants/Footer";
 
 
 function App() {
   return (
       <Router >
-    <div id="routeur">
           <nav>
               <ul className='nav-menu'>
                   <li>
@@ -28,12 +28,14 @@ function App() {
                   </li>
               </ul>
           </nav>
+        <main>
           <Switch>
               <Route path="/dico/mots"><ListMots/></Route>
               <Route path="/compte" component={MonCompte}/>
               <Route path="/" component={Home}/>
           </Switch>
-    </div>
+        </main>
+          <Footer />
       </Router>
 
   );
