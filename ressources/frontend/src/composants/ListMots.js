@@ -1,6 +1,7 @@
 import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
+import SignSpell from "./SignSpell";
 
 export default class ListMots extends React.Component{
 
@@ -215,7 +216,7 @@ export default class ListMots extends React.Component{
                 <h1 className = "text-center">Dictionnaire</h1>
 
                 <article className="barre-recherche">
-                    <label for="search" className="visuallyhidden">Mot à rechercher</label>
+                    <label htmlFor="search" className="visuallyhidden">Mot à rechercher</label>
                     <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1"/>
                     <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
                     <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
@@ -239,7 +240,6 @@ export default class ListMots extends React.Component{
 
                     <button type="button" disabled={currentPage === totalPages ? true : false}
                             onClick={this.lastPage}>Dernière</button>
-
                 </article>
 
 
@@ -287,7 +287,8 @@ export default class ListMots extends React.Component{
                     <div>
                        <p>La vidéo</p>
                         <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
-                                allowFullScreen></iframe>
+    allowFullScreen title="vidéo"/>
+                    <SignSpell id={this.state.idMot}/>
                     </div>
                 )}
 
