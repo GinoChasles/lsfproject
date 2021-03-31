@@ -28,6 +28,8 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn( name = "role_id" ) )
     Set<Role> roles;
 
+
+
     public Set<Role> getRoles() {
         return roles;
     }
