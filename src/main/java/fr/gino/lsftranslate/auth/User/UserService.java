@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -20,7 +22,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User insert(User user) {
-        BCryptPasswordEncoder bCryptPasswordEncoder
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 }
