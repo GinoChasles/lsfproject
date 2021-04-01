@@ -2,6 +2,7 @@ import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
 import SignSpell from "./SignSpell";
+import SignSpellClass from "./SignSpellClass";
 
 export default class ListMots extends React.Component{
 
@@ -189,14 +190,7 @@ export default class ListMots extends React.Component{
         this.setState({
             idMot: id
         })
-            return (
-                <div className="infos-mots">
-                    <p>infos verbales:{data.spelling}</p>
-                    <p>infos verbale</p>
-                    <p>infos verbales:{data.lemma}</p>
-                    <p>infos verbales:{data.nbletters}</p>
-                </div>
-            )
+
     console.log(this.state.idMot)
         })
     }
@@ -281,14 +275,19 @@ export default class ListMots extends React.Component{
                     </tbody>
                 </table>
 
+{/*
                 {console.log(this.state.idMot)}
+*/}
 
                 {this.state.clicked !== "video" ? null : (
                     <div>
                        <p>La vidéo</p>
                         <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
     allowFullScreen title="vidéo"/>
+{/*
                     <SignSpell id={this.state.idMot}/>
+*/}
+                    <SignSpellClass props={this.state.idMot} />
                     </div>
                 )}
 

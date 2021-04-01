@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-export default function SignSpell(id) {
+export default function SignSpell(props) {
 const [url, setUrl] = useState("test")
 
    let fetchUrlId = (id) => {
@@ -9,7 +9,7 @@ const [url, setUrl] = useState("test")
 
     return (
         <article>
-            <img src={fetchUrlId(id)} alt={url}/>
+            <img src={fetchUrlId(props.id)} alt={url}/>
             <p>test signspell componant</p>
         </article>
     )
