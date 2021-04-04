@@ -280,7 +280,7 @@ export default class ListMots extends React.Component{
 */}
 
                 {this.state.clicked !== "video" ? null : (
-                    <div>
+                    <article>
                        <p>La vidéo</p>
                         <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
     allowFullScreen title="vidéo"/>
@@ -288,16 +288,16 @@ export default class ListMots extends React.Component{
                     <SignSpell id={this.state.idMot}/>
 */}
                     <SignSpellClass props={this.state.idMot} />
-                    </div>
+                    </article>
                 )}
 
                 {this.state.clicked !== "ajout" ? null : (
-                    <div>
+                    <article>
                    <form>
                     <input type={"text"}/>
                     <button type={"submit"}>Envoyer</button>
                    </form>
-                    </div>
+                    </article>
                 )}
             </section>
 
