@@ -1,8 +1,7 @@
 import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
-import SignSpell from "./SignSpell";
-import SignSpellClass from "./SignSpellClass";
+import InfosMots from "./InfosMots";
 
 export default class ListMots extends React.Component{
 
@@ -12,12 +11,7 @@ export default class ListMots extends React.Component{
             mots:[],
             currentPage: 1,
             motsPerPage: 20,
-            search: '',
-            idMot: 1,
-            clicked: null
-        };
-        this.handleClick = (props) => {
-            this.setState({clicked: props});
+            search: ''
         };
     }
 
@@ -128,82 +122,9 @@ export default class ListMots extends React.Component{
         this.findAllMots(this.state.currentPage);
     }
 
-    notVideo = (mot) => {
-        if(mot.video === null || mot.video === undefined ){
-            return (
-                <div>
-                    <img src={process.env.PUBLIC_URL + '/img/icones/ajoutvideo.svg'} alt={'icone ajout vidéo'}
-                         onClick={this.ajouterVideo}/>
-                    <img src={process.env.PUBLIC_URL + '/img/icones/notvideo.svg'} alt={'icone absence vidéo'}/>
-                </div>
-            )} else {
-            return (
-                <div>
-                    <img src={process.env.PUBLIC_URL + '/img/icones/video.svg'} alt={'icone vidéo existante'}
-                         onClick={this.afficherVideo}/>
-                </div>
-            )}
-    }
-
-    ajouterVideo = () => {
-        this.handleClick("ajout")
-                // alert("ajouter video?")
-
-    }
-
-    afficherVideo = () => {
-        this.handleClick("video")
-                // {alert("video existante")}
-
-    }
-
-    notGenre = (mot) => {
-        if(mot.gender === null || mot.gender === undefined ){
-            return (
-                <div>
-
-                </div>
-            )} else {
-            return (
-                <div>
-                    {mot.gender.name}
-                </div>
-            )}
-    }
-
-    notNombre = (mot) => {
-        if(mot.number === null || mot.number === undefined ){
-            return (
-                <div>
-
-                </div>
-            )} else {
-            return (
-                <div>
-                    {mot.number.name}
-                </div>
-            )}
-    }
-
-    fetchMotParId = (id) => {
-        fetch('http://localhost:8080/dico/words/' + id ).then(res => res.json()).then((data) => {
-        this.setState({
-            idMot: id
-        })
-
-    console.log(this.state.idMot)
-        })
-    }
-
     render () {
 
         const {mots, currentPage, totalPages, search} = this.state;
-
-        // const lastIndex = currentPage * motsPerPage;
-        // const firstIndex = lastIndex - motsPerPage;
-        // const currentMots = mots.slice(firstIndex,lastIndex);
-        // const totalPages = Math.round(mots.length / motsPerPage);
-
 
         return (
             <section className="page">
@@ -215,6 +136,10 @@ export default class ListMots extends React.Component{
                     <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
                     <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
                 </article>
+
+
+                    <InfosMots mots={mots} />
+
 
                 <article className="pagination">
                     <p>Page {currentPage} sur {totalPages}</p>
@@ -237,68 +162,6 @@ export default class ListMots extends React.Component{
                 </article>
 
 
-                <table className = "table">
-                    <thead>
-                    <tr>
-                        <td>Orthographe</td>
-                        <td> lemme du mot</td>
-                        <td> catégorie gramaticale</td>
-                        <td> genre</td>
-                        <td>  nombre</td>
-                        <td>  info verbale</td>
-                        <td> nbr de lettres </td>
-                        <td> nbr de syllabes </td>
-                        <td> ortho renversé </td>
-                        <td> vidéo  </td>
-                    </tr>
-
-                    </thead>
-                    <tbody>
-                    {
-                        mots.map(
-                            mot =>
-                                <tr key = {mot.id} onClick={()=>this.fetchMotParId(mot.id)}>
-                                    <td> {mot.spelling}</td>
-                                    <td> {mot.lemma}</td>
-                                    <td> {mot.catgram.name}</td>
-                                    <td> {this.notGenre(mot)}</td>
-                                    <td> {this.notNombre(mot)}</td>
-                                    <td> {mot.infover}</td>
-                                    <td> {mot.nbletters}</td>
-                                    <td> {mot.nbsyll}</td>
-                                    <td> {mot.reverspel}</td>
-                                    <td> {this.notVideo(mot)}</td>
-
-                                </tr>
-                        )
-                    }
-                    </tbody>
-                </table>
-
-{/*
-                {console.log(this.state.idMot)}
-*/}
-
-                {this.state.clicked !== "video" ? null : (
-                    <article>
-                       <p>La vidéo</p>
-                        <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
-    allowFullScreen title="vidéo"/>
-{/*
-                    <SignSpell id={this.state.idMot}/>
-*/}
-                    <SignSpellClass props={this.state.idMot} />
-                    </article>
-                )}
-
-                {this.state.clicked !== "ajout" ? null : (
-                    <article>
-                   <form>
-                    <input type={"text"}/>
-                    <button type={"submit"}>Envoyer</button>
-                   </form>
-                    </article>
-                )}
             </section>
 
         )
