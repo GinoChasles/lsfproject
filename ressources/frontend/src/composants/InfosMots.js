@@ -80,22 +80,24 @@ export default class InfosMots extends React.Component{
 
     }
 
+
     render()
     {
         return(
+            <article>
             <table className = "table">
                 <thead>
                 <tr>
-                    <td>Orthographe</td>
-                    <td> lemme du mot</td>
-                    <td> catégorie gramaticale</td>
-                    <td> genre</td>
-                    <td>  nombre</td>
-                    <td>  info verbale</td>
-                    <td> nbr de lettres </td>
-                    <td> nbr de syllabes </td>
-                    <td> ortho renversé </td>
-                    <td> vidéo  </td>
+                    <th scope={"col"}>Orthographe</th>
+                    <th scope={"col"}> lemme du mot</th>
+                    <th scope={"col"}> catégorie gramaticale</th>
+                    <th scope={"col"}> genre</th>
+                    <th scope={"col"}>  nombre</th>
+                    <th scope={"col"}>  info verbale</th>
+                    <th scope={"col"}> nbr de lettres </th>
+                    <th scope={"col"}> nbr de syllabes </th>
+                    <th scope={"col"}> ortho renversé </th>
+                    <th scope={"col"}> vidéo  </th>
                 </tr>
 
                 </thead>
@@ -103,7 +105,7 @@ export default class InfosMots extends React.Component{
                 {
                     this.props.mots.map(
                         mot =>
-                            <tr key = {mot.id} onClick={()=>this.fetchMotParId(mot.id)}>
+                            <tr key = {mot.id} onClick={()=>this.setState({idMot: mot.id})} >
                                 <td> {mot.spelling}</td>
                                 <td> {mot.lemma}</td>
                                 <td> {mot.catgram.name}</td>
@@ -119,6 +121,8 @@ export default class InfosMots extends React.Component{
                     )
                 }
     </tbody>
+            </table>
+                {/*<button type={"button"} onClick={}>Bouton</button>*/}
                 <article>
                     {this.state.clicked !== "video" ? null : (
                         <article>
@@ -135,6 +139,7 @@ export default class InfosMots extends React.Component{
                     {this.state.clicked !== "ajout" ? null : (
                         <article>
                             <form>
+                                <label>text</label>
                                 <input type={"text"}/>
                                 <button type={"submit"}>Envoyer</button>
                             </form>
@@ -143,7 +148,7 @@ export default class InfosMots extends React.Component{
                         </article>
                     )}
                 </article>
-            </table>
+            </article>
         )
     }
 }

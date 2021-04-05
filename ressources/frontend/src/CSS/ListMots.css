@@ -8,3 +8,9 @@
     height:350px;
     background-color: black;
 }
+tr:active{
+    background-color: #6d76f7;
+}
+table, tr, td {
+    border-collapse: collapse;
+}

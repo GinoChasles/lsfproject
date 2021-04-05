@@ -8,7 +8,8 @@ export default class SignSpellClass extends React.Component {
         {
             url: '',
             word:'',
-            wordList: []
+            wordList: [],
+            idMot:0
         }}
     componentDidMount() {
         this.fetchUrlId(this.props.props);
@@ -17,10 +18,9 @@ export default class SignSpellClass extends React.Component {
         fetch("http://localhost:8080/dico/words/" + id).then(res => res.json()).then(data => {
             this.setState({
                 word: data.spelling,
-                wordList: data.spelling.split("")
+                wordList: data.spelling.split(""),
+                idMot: data.id
             })
-
-
 
             if (data.url === undefined || data.url === null) {
                 return (
@@ -49,12 +49,12 @@ export default class SignSpellClass extends React.Component {
     render() {
         return (
             <article>
-                {this.fetchUrlId(this.props.props)}
+                {/*{this.fetchUrlId(this.props.props)}*/}
 {/*
                 <img src={process.env.PUBLIC_URL + this.state.url} alt={this.state.url}/>
 */}
                 {this.state.wordList.map(el=>{
-                   return( <img src={process.env.PUBLIC_URL + "/img/alphabet/" + el + ".png"} alt={this.state.url}/>)
+                   return( <img  src={process.env.PUBLIC_URL + "/img/alphabet/" + el + ".png"} alt={this.state.url}/>)
 
                 })}
                 <p>test signspell componant</p>

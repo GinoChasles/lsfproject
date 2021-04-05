@@ -22,7 +22,7 @@
 }
 
 .nav-menu {
-    background-color: #DFF7F1;
+    background: linear-gradient(#FFDB5A, #FDF39A);
     position:fixed;
     display: grid;
     grid-template-columns: repeat(3, 2fr);

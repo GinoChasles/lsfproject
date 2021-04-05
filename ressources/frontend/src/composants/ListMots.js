@@ -138,7 +138,7 @@ export default class ListMots extends React.Component{
                 </article>
 
 
-                    <InfosMots mots={mots} />
+
 
 
                 <article className="pagination">
@@ -161,6 +161,7 @@ export default class ListMots extends React.Component{
                             onClick={this.lastPage}>Dernière</button>
                 </article>
 
+                <InfosMots mots={mots} />
 
             </section>
 
