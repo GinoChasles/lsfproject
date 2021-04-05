@@ -2,20 +2,19 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../frontend/src/App.css">
-    <link rel="stylesheet" href="../frontend/src/index.css">
+    <link rel="stylesheet" href="glossary.css">
     <title>Glossaire et Abréviations</title>
 </head>
 <nav role="navigation">
     <ul class='nav-menu'>
         <li>
-            <a href="src/composants/ListMots.js" class="nav-links">Dictionnaire</a>
+            <a href="src/composants/ListMots.js" class="nav-links" title="lien vers dictionnaire">Dictionnaire</a>
         </li>
         <li>
             <a href="src/composants/Home.js"><img id="logo-nav" src="/img/logo/logo1.png" alt="logo lsf4all" /></a>
         </li>
         <li>
-            <a href="src/composants/MonCompte.js" class="nav-links">Mon Compte</a>
+            <a href="src/composants/MonCompte.js" class="nav-links" title="lien vers page de profil">Mon Compte</a>
         </li>
     </ul>
 </nav>
@@ -24,12 +23,12 @@
 <h1>Glossaire et Abréviations</h1>
 <section>
     <article>
-    <h2>CatGram</h2>
-        <table>
+    <h2>Catégorie Grammaticale</h2>
+        <table role="table">
             <thead>
             <tr>
-                <td>Abréviations</td>
-                <td>Catégorie grammaticale</td>
+                <th scope="col">Abréviations</th>
+                <th scope="col">Catégorie grammaticale</th>
             </tr>
             </thead>
             <tbody>
@@ -124,14 +123,15 @@
             </tbody>
         </table>
     </article>
-
-    <article>
+</section>
+    <section>
+    <article class="flexbox">
         <h2>Conjugaison - Modes</h2>
-        <table>
+        <table role="table">
             <thead>
             <tr>
-                <td>Abréviations</td>
-                <td>Mode</td>
+                <th scope="col">Abréviations</th>
+                <th scope="col">Mode</th>
             </tr>
             </thead>
             <tbody>
@@ -163,13 +163,13 @@
         </table>
     </article>
 
-    <article>
+    <article class="flexbox">
         <h2>Conjugaison - Personnes</h2>
-        <table>
+        <table role="table">
             <thead>
             <tr>
-                <td>Abréviations</td>
-                <td>Personne</td>
+                <th scope="col">Abréviations</th>
+                <th scope="col">Personne</th>
             </tr>
             </thead>
             <tbody>
@@ -201,13 +201,13 @@
         </table>
     </article>
 
-    <article>
+    <article class="flexbox">
         <h2>Conjugaison - Temps</h2>
-        <table>
+        <table role="table">
             <thead>
             <tr>
-                <td>Abréviations</td>
-                <td>Temps</td>
+                <th scope="col">Abréviations</th>
+                <th scope="col">Temps</th>
             </tr>
             </thead>
             <tbody>
@@ -234,4 +234,7 @@
 </section>
 </main>
 </body>
+<footer>
+    <p>2020-2021, Tout droits réservés par LSF4All</p>
+</footer>
 </html>

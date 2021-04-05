@@ -132,7 +132,7 @@ export default class ListMots extends React.Component{
 
                 <article className="barre-recherche">
                     <label htmlFor="search" className="visuallyhidden">Mot à rechercher</label>
-                    <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1"/>
+                    <input type="text" name="search" value={search} onChange={this.searchChange} required minLength="1" placeholder={"Rechercher un mot"}/>
                     <button type="button" name="search" onClick={this.searchData}>Rechercher</button>
                     <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
                 </article>

@@ -6,7 +6,7 @@ export default class Footer extends React.Component{
         let fullYear = new Date().getFullYear();
         return (
             <footer className="footer">
-                <a href="http://localhost:3000/test.html">lexique</a>
+                <a href="http://localhost:3000/glossary.html">lexique</a>
                 <p>{fullYear}-{fullYear+1}, Tout droits réservés par LSF4All</p>
             </footer>
         )
