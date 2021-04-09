@@ -16,14 +16,14 @@ export default class InfosMots extends React.Component{
         };
     }
 
-    fetchMotParId = (id) => {
-        fetch("http://localhost:8080/dico/words/" + id ).then(res => res.json()).then((data) => {
-            this.setState({
-                mot:data,
-                idMot:id,
-            })
-        })
-    }
+    // fetchMotParId = (id) => {
+    //     fetch("http://localhost:8080/dico/words/" + id ).then(res => res.json()).then((data) => {
+    //         this.setState({
+    //             mot:data,
+    //             idMot:id,
+    //         })
+    //     })
+    // }
     notNombre = (mot) => {
         if(mot.number === null || mot.number === undefined ){
             return (
