@@ -11,8 +11,8 @@ export default class InfosMots extends React.Component{
             idMot:1
         }
 
-        this.handleClick = (props) => {
-            this.setState({clicked: props});
+        this.handleClick = (e) => {
+            this.setState({clicked: e});
         };
     }
 

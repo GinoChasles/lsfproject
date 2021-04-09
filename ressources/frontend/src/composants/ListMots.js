@@ -119,7 +119,7 @@ export default class ListMots extends React.Component{
     }
     cancelSearch = () => {
         this.setState({"search":''});
-        this.findAllMots(this.state.currentPage);
+        this.findAllMots(0);
     }
 
     render () {
