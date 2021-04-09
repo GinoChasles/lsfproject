@@ -10,6 +10,8 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #FFFAEA;
+
 }
 
 code {
@@ -35,7 +37,7 @@ main{
 }
 
 .nav-menu {
-    background: linear-gradient(#FFDB5A, #FDF39A);
+    background: linear-gradient(#9640FF, #811BFD);
     position:fixed;
     display: grid;
     grid-template-columns: repeat(3, 2fr);
@@ -57,7 +59,7 @@ main{
     height:64px;
 }
 .nav-links {
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
     font-size: x-large;
@@ -73,10 +75,11 @@ table, th, td{
     border-collapse: collapse;
     text-align: center;
     padding:10px;
+    background-color: #EFEDED;
 }
 
-thead {
- background-color: #FFDB5A;
+th {
+ background-color: #FFDB5A ;!important
 }
 section {
     display: flex;

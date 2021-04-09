@@ -1,5 +1,15 @@
 .table {
-    width: 100%;
+    width: 80%;
+    background-color: #EFEDED;
+    border: 1px solid black;
+    margin: auto;
+}
+.barre-recherche > input{
+    background-color: #FFDB5A;
+}
+.pagination {
+    margin-bottom: 15px;
+
 }
 .infos-mots {
     position:relative;
@@ -13,4 +23,7 @@ tr:active{
 }
 table, tr, td {
     border-collapse: collapse;
+}
+th {
+    border-bottom: 1px solid black;
 }
