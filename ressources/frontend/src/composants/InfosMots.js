@@ -8,7 +8,8 @@ export default class InfosMots extends React.Component{
             mots: [],
             id: this.props.id,
             clicked: null,
-            idMot:1
+            idMot:1,
+            isActive: null
         }
 
         this.handleClick = (e) => {
@@ -16,14 +17,12 @@ export default class InfosMots extends React.Component{
         };
     }
 
-    // fetchMotParId = (id) => {
-    //     fetch("http://localhost:8080/dico/words/" + id ).then(res => res.json()).then((data) => {
-    //         this.setState({
-    //             mot:data,
-    //             idMot:id,
-    //         })
-    //     })
-    // }
+   spellingButton = () => {
+       this.handleClick("spelling")
+    }
+    stopSpellingButton = () => {
+       this.handleClick(null)
+    }
     notNombre = (mot) => {
         if(mot.number === null || mot.number === undefined ){
             return (
@@ -81,6 +80,19 @@ export default class InfosMots extends React.Component{
     }
 
 
+    toggleActive = (mot,i) => {
+        this.setState({idMot: mot.id})
+        if (i === this.state.isActive) {
+            this.setState({
+                isActive: null,
+                clicked: null
+            });
+        } else {
+            this.setState({
+                isActive: i
+            });
+        }
+    };
     render()
     {
         return(
@@ -104,8 +116,8 @@ export default class InfosMots extends React.Component{
     <tbody>
                 {
                     this.props.mots.map(
-                        mot =>
-                            <tr key = {mot.id} onClick={()=>this.setState({idMot: mot.id})} >
+                        (mot,i) =>
+                            <tr key = {mot.id} style={this.state.isActive === i ? {backgroundColor:"#6d76f7"} : {backgroundColor:"#EFEDED"}} onClick={()=>this.toggleActive(mot,i)} >
                                 <td> {mot.spelling}</td>
                                 <td> {mot.lemma}</td>
                                 <td> {mot.catgram.name}</td>
@@ -122,8 +134,18 @@ export default class InfosMots extends React.Component{
                 }
     </tbody>
             </table>
-                {/*<button type={"button"} onClick={}>Bouton</button>*/}
-                <article>
+                <button type={"button"} onClick={this.spellingButton}>Spelling Bouton</button>
+                <button type={"button"} onClick={this.stopSpellingButton}>X</button>
+                {this.state.clicked !== "spelling" ? null : (
+                    <article>
+                        <p>Spelling</p>
+
+
+
+                        <SignSpellClass props={this.state.idMot} />
+
+                    </article>
+                )}
                     {this.state.clicked !== "video" ? null : (
                         <article>
                             <p>La vidéo</p>
@@ -131,7 +153,7 @@ export default class InfosMots extends React.Component{
                                     allowFullScreen title="vidéo"/>
 
 
-                            <SignSpellClass props={this.state.idMot} />
+                            {/*<SignSpellClass props={this.state.idMot} />*/}
 
                         </article>
                     )}
@@ -143,11 +165,10 @@ export default class InfosMots extends React.Component{
                                 <input type={"text"}/>
                                 <button type={"submit"}>Envoyer</button>
                             </form>
-                            <SignSpellClass props={this.state.idMot} />
+                            {/*<SignSpellClass props={this.state.idMot} />*/}
 
                         </article>
                     )}
-                </article>
             </article>
         )
     }
