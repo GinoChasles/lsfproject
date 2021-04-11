@@ -151,10 +151,6 @@ export default class InfosMots extends React.Component{
                             <p>La vidéo</p>
                             <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
                                     allowFullScreen title="vidéo"/>
-
-
-                            {/*<SignSpellClass props={this.state.idMot} />*/}
-
                         </article>
                     )}
 
@@ -165,8 +161,6 @@ export default class InfosMots extends React.Component{
                                 <input type={"text"}/>
                                 <button type={"submit"}>Envoyer</button>
                             </form>
-                            {/*<SignSpellClass props={this.state.idMot} />*/}
-
                         </article>
                     )}
             </article>

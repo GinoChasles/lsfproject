@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React from "react";
 
-export default function Infos(props) {
-    const donnees = [props.catgram.name,props.infover,props.nbletters,props.nbsyll,props.reverspel]
-    const [infos, setInfos] = useState('');
+export default class Infos extends React.Component {
+    constructor(props) {
+        super(props);
 
-    return (
-        <article>
-            Catgram : {infos.catgram.name}
-            Infos verbales : {infos.infover}
-            <button onClick={()=> setInfos(props)}></button>
-        </article>
-    )
+    }
+
+    render() {
+        return (
+            <article>
+                {
+                    this.props.mots.map(mot => {
+                        <div key={mot.id}>{mot.lemma}</div>
+
+                    })
+                }
+            </article>
+        )
+    }
 }

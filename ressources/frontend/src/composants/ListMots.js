@@ -2,6 +2,7 @@ import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
 import InfosMots from "./InfosMots";
+import Infos from "./Infos";
 
 export default class ListMots extends React.Component{
 
@@ -162,7 +163,7 @@ export default class ListMots extends React.Component{
                 </article>
 
                 <InfosMots mots={mots} />
-
+                <Infos mots={mots} />
             </section>
 
         )
