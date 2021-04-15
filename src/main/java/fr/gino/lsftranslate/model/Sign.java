@@ -39,4 +39,13 @@ public class Sign {
         this.url = url;
     }
 
+
+
+    public Letter getLetter() {
+        return letter;
+    }
+
+    public void setLetter(Letter letter) {
+        this.letter = letter;
+    }
 }
