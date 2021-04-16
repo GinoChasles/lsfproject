@@ -2,6 +2,7 @@
     width: 80%;
     background-color: #EFEDED;
     border: 1px solid black;
+    border-radius: 15px;
     margin: auto;
 }
 .barre-recherche > input{
@@ -18,9 +19,17 @@
     height:350px;
     background-color: black;
 }
-table, tr, td {
-    border-collapse: collapse;
+table, tr, td{
+    border-spacing: 0;
 }
 th {
     border-bottom: 1px solid black;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
 }

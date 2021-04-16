@@ -14,10 +14,9 @@ export default class ListMots extends React.Component{
             motsPerPage: 20,
             search: ''
         };
-    }
-
-    componentDidMount() {
         this.findAllMots(this.state.currentPage);
+    }
+    componentDidMount() {
     }
 
     findAllMots(currentPage){
@@ -89,24 +88,13 @@ export default class ListMots extends React.Component{
         }
     }
 
-    searchChange = event => {
-        this.setState({
-            search : event.target.value
-        })
-    }
+
 
     searchData = (currentPage) => {
         currentPage -=1;
 
         if(this.state.search === ''){
-            fetch('http://localhost:8080/dico/words/all/20?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
-                this.setState({
-                    mots: data.content,
-                    totalPages: data.totalPages,
-                    totalElements: data.totalElements,
-                    currentPage: data.number + 1
-                });
-            }));
+            this.findAllMots(this.state.currentPage);
         } else {
             fetch('http://localhost:8080/dico/words/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
                 this.setState({
@@ -122,7 +110,11 @@ export default class ListMots extends React.Component{
         this.setState({"search":''});
         this.findAllMots(0);
     }
-
+    searchChange = event => {
+        this.setState({
+            search : event.target.value
+        })
+    }
     render () {
 
         const {mots, currentPage, totalPages, search} = this.state;
@@ -138,10 +130,6 @@ export default class ListMots extends React.Component{
                     <button type="button" name="cancel" onClick={this.cancelSearch}>Annuler</button>
                 </article>
 
-
-
-
-
                 <article className="pagination">
                     <p>Page {currentPage} sur {totalPages}</p>
 
@@ -154,7 +142,6 @@ export default class ListMots extends React.Component{
                     <label htmlFor="currentPage" className="visuallyhidden">numéro de page</label>
                     <input type="number" name="currentPage" id="currentPage" value={currentPage} max={totalPages} onChange={this.changePage} />
 
-
                     <button type="button" disabled={currentPage === totalPages ? true : false}
                             onClick={this.nextPage}>Suivante</button>
 
@@ -163,7 +150,6 @@ export default class ListMots extends React.Component{
                 </article>
 
                 <InfosMots mots={mots} />
-                <Infos mots={mots} />
             </section>
 
         )
