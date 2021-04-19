@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/dico/number")
+@RequestMapping("/dico/numbers")
 public class NumberController {
     @Autowired
     NumberService numberService;

@@ -62,27 +62,33 @@ INSERT INTO `lsfproject2`.`letter` (`letter`, `signe_id`) VALUES ('z', '26');
 
 
 
-/*transforme les noms de la catégorie gramaticale dans la table word en id associé dans la table catgram */
-
+/* transforme les noms de la catégorie grammatical
+  dans la table word par id associé dans la table catgram */
 UPDATE word
     INNER JOIN catgram
 ON word.catgram = catgram.nom
     SET word.catgram = catgram.id
 WHERE catgram.id IS NOT NULL;
-
+/* transforme les noms des genres
+  dans la table word par id associé dans la table gender */
 UPDATE word
     INNER JOIN gender
 ON word.gender = gender.nom
     SET word.gender = gender.id
 WHERE gender.id IS NOT NULL;
-
+/* transforme les noms de nombre
+  dans la table word par id associé dans la table number */
 UPDATE word
     INNER JOIN nombre
 ON word.nombre = nombre.nom
     SET word.nombre = nombre.id
 WHERE nombre.id IS NOT NULL;
 
-
+/* affiche tout les éléments de la table word dont l'attribut catgram=15 (=préposition)
+  avec la correspondence de l'id de la table catgram*/
+SELECT * FROM lsfproject.word
+INNER JOIN catgram ON word.catgram= catgram.id
+WHERE word.catgram=15;
 
 
 /*ajout foreign key entre la table word et gender*/
@@ -93,8 +99,6 @@ ALTER TABLE `lsfproject`.`word`
             ON DELETE NO ACTION
             ON UPDATE NO ACTION;
 
-/*affiche les éléments de word avec la correspondance de l'id de catgram*/
-SELECT * FROM lsfproject.word
-                  INNER JOIN catgram ON word.catgram= catgram.id;
+
 # correctif column video reset à null (soucis coté front quand valeur défini)
 UPDATE `lsfproject`.`word` SET `video` = NULL WHERE (`id` = '1');
