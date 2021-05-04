@@ -5,7 +5,6 @@ export default class InfosMots extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            mots: [],
             id: this.props.id,
             clicked: null,
             idMot:1,
@@ -117,7 +116,9 @@ export default class InfosMots extends React.Component{
                 {
                     this.props.mots.map(
                         (mot,i) =>
-                            <tr key = {mot.id} style={this.state.isActive === i ? {backgroundColor:"#6d76f7"} : {backgroundColor:"#EFEDED"}} onClick={()=>this.toggleActive(mot,i)} >
+                            <tr key = {mot.id}
+                                style={this.state.isActive === i ? {backgroundColor:"#6d76f7"} : {backgroundColor:"#EFEDED"}}
+                                onClick={()=>this.toggleActive(mot,i)} >
                                 <td> {mot.spelling}</td>
                                 <td> {mot.lemma}</td>
                                 <td> {mot.catgram.name}</td>

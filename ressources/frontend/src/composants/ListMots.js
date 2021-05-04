@@ -96,7 +96,8 @@ export default class ListMots extends React.Component{
         if(this.state.search === ''){
             this.findAllMots(this.state.currentPage);
         } else {
-            fetch('http://localhost:8080/dico/words/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage).then((res)=>res.json().then((data)=>{
+            fetch('http://localhost:8080/dico/words/search/'+this.state.search+'?page='+currentPage+'&size='+this.state.motsPerPage)
+                .then((res)=>res.json().then((data)=>{
                 this.setState({
                     mots: data.content,
                     totalPages: data.totalPages,
