@@ -28,12 +28,16 @@ export default class SignSpellClass extends React.Component {
         })
 
     }
+
+    randomId = id => {
+        return Math.floor(Math.random() * (100000 - id)) + id
+    }
     render() {
         return (
             <article>
 
                 {this.state.wordList.map(el=>{
-                   return( <img src={process.env.PUBLIC_URL + "/img/alphabet/" + el + ".png"} alt={this.state.url}/>)
+                   return( <img id={this.randomId(this.state.idMot)} src={process.env.PUBLIC_URL + "/img/alphabet/" + el + ".png"} alt={this.state.url}/>)
 
                 })}
             </article>

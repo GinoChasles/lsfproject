@@ -2,8 +2,6 @@ import React from "react";
 import '../App.css';
 import '../CSS/ListMots.css';
 import InfosMots from "./InfosMots";
-import Infos from "./Infos";
-
 export default class ListMots extends React.Component{
 
     constructor(props) {
@@ -11,12 +9,12 @@ export default class ListMots extends React.Component{
         this.state= {
             mots:[],
             currentPage: 1,
-            motsPerPage: 20,
+            motsPerPage: 10,
             search: ''
         };
-        this.findAllMots(this.state.currentPage);
     }
     componentDidMount() {
+        this.findAllMots(this.state.currentPage);
     }
 
     findAllMots(currentPage){

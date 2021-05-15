@@ -7,7 +7,7 @@
 }
 .page{
     position: relative;
-    top:80px;
+    top:60px;
     text-align: center;
 }
 .visuallyhidden {
@@ -56,6 +56,9 @@
     transition: all 0.2s ease-out;
 }
 
+main {
+    margin-bottom: 3em;
+}
 
 @media screen and (max-width:420px) {
 

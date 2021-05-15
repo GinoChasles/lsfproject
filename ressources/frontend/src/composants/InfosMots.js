@@ -150,15 +150,17 @@ export default class InfosMots extends React.Component{
                     {this.state.clicked !== "video" ? null : (
                         <article>
                             <p>La vidéo</p>
-                            <iframe width="427" height="240" src="https://www.youtube.com/embed/oOiGmbYjwUQ" frameBorder="0"
-                                    allowFullScreen title="vidéo"/>
+                            <iframe width="427" height="240" src="https://www.youtube.com/embed/xy_Yy6SQDhM"
+                                    title="YouTube video player" frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen></iframe>
                         </article>
                     )}
 
                     {this.state.clicked !== "ajout" ? null : (
                         <article>
                             <form>
-                                <label>text</label>
+                                <label>Formulaire d'ajout de vidéo</label>
                                 <input type={"text"}/>
                                 <button type={"submit"}>Envoyer</button>
                             </form>

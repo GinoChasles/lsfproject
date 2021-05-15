@@ -95,9 +95,7 @@ WHERE word.catgram=15;
 ALTER TABLE `lsfproject`.`word`
     ADD CONSTRAINT `id_genre`
         FOREIGN KEY (`gender`)
-            REFERENCES `lsfproject`.`gender` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION;
+            REFERENCES `lsfproject`.`gender` (`id`);
 
 
 # correctif column video reset à null (soucis coté front quand valeur défini)
